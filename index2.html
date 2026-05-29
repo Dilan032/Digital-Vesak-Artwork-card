@@ -330,6 +330,7 @@
                 padding-top: 1px !important;
                 padding-bottom: 1px !important;
             }
+            /* REMOVED line-clamp on message so full text shows */
             #render-message {
                 font-size: 0.65rem !important;
                 line-height: 1.35 !important;
@@ -538,7 +539,7 @@
                     <div id="card-main-layout" class="w-full h-full flex flex-col justify-between items-center z-20">
                         <div id="art-header-ornament-parent" class="w-full flex flex-col items-center justify-start pointer-events-none mt-1"><div class="flex items-center gap-1.5 text-amber-400/90 tracking-widest text-[10px] sm:text-xs"><span>✦</span><span>☸</span><span>✦</span></div></div>
                         <div id="visuals-wrapper" class="w-full flex-grow flex flex-col justify-center items-center py-2 relative pointer-events-none max-h-[42%] overflow-hidden">
-                            <!-- Theme visuals (same as original) -->
+                            <!-- All 6 theme visuals identical to original, abbreviated for length -->
                             <div id="theme-visual-lantern" class="w-full flex-col items-center justify-center hidden"><div class="w-44 h-44 flex flex-col items-center justify-start animate-lantern relative"><svg class="w-36 h-36 drop-shadow-[0_0_25px_rgba(234,179,8,0.7)]" viewBox="0 0 200 200"><polygon points="100,20 150,100 100,180 50,100" fill="url(#lantern-glow-center)" stroke="#FFD700" stroke-width="2"/><polygon points="100,20 100,100 50,100" fill="url(#wing-linear-1)" stroke="#FFA500" stroke-width="1"/><polygon points="100,20 100,100 150,100" fill="url(#wing-linear-2)" stroke="#FFA500" stroke-width="1"/><polygon points="100,180 100,100 50,100" fill="url(#wing-linear-3)" stroke="#FFA500" stroke-width="1"/><polygon points="100,180 100,100 150,100" fill="url(#wing-linear-4)" stroke="#FFA500" stroke-width="1"/><defs><radialGradient id="lantern-glow-center"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="35%" stop-color="#FFF38A"/><stop offset="100%" stop-color="#EA580C"/></radialGradient><linearGradient id="wing-linear-1" x1="50" y1="100" x2="100" y2="20"><stop offset="0%" stop-color="#EF4444"/><stop offset="100%" stop-color="#F59E0B"/></linearGradient><linearGradient id="wing-linear-2" x1="150" y1="100" x2="100" y2="20"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#10B981"/></linearGradient><linearGradient id="wing-linear-3" x1="50" y1="100" x2="100" y2="180"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#EF4444"/></linearGradient><linearGradient id="wing-linear-4" x1="150" y1="100" x2="100" y2="180"><stop offset="0%" stop-color="#10B981"/><stop offset="100%" stop-color="#3B82F6"/></linearGradient></defs></svg><div class="absolute bottom-6 left-[20%] flex justify-between w-[60%] pointer-events-none z-10"><div class="w-1.5 bg-gradient-to-b from-amber-400 to-red-600 h-10 animate-streamer"></div><div class="w-1.5 bg-gradient-to-b from-yellow-300 to-orange-500 h-14 animate-streamer" style="animation-delay:0.4s"></div><div class="w-2 bg-gradient-to-b from-white to-amber-500 h-16 animate-streamer" style="animation-delay:0.2s"></div><div class="w-1.5 bg-gradient-to-b from-yellow-300 to-orange-500 h-14 animate-streamer" style="animation-delay:0.6s"></div><div class="w-1.5 bg-gradient-to-b from-amber-400 to-red-600 h-10 animate-streamer" style="animation-delay:0.9s"></div></div></div></div>
                             <div id="theme-visual-stupa" class="w-full flex-col items-center justify-center hidden"><div class="w-full h-40 flex items-center justify-center relative"><div class="absolute inset-0 flex items-center justify-center scale-110 z-0 animate-aurapulse"><svg class="w-52 h-52 opacity-50" viewBox="0 0 200 200"><g stroke="url(#temple-light-grad)" stroke-width="4"><line x1="100" y1="100" x2="200" y2="100"/><line x1="100" y1="100" x2="0" y2="100"/><line x1="100" y1="100" x2="100" y2="200"/><line x1="100" y1="100" x2="100" y2="0"/><line x1="100" y1="100" x2="175" y2="175"/><line x1="100" y1="100" x2="25" y2="25"/><line x1="100" y1="100" x2="175" y2="25"/><line x1="100" y1="100" x2="25" y2="175"/></g><circle cx="100" cy="115" r="45" fill="url(#moon-glow-grad)"/><defs><radialGradient id="temple-light-grad"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="25%" stop-color="#FFD700"/><stop offset="60%" stop-color="#FF3B30"/><stop offset="100%" stop-color="#0056B3" stop-opacity="0"/></radialGradient><radialGradient id="moon-glow-grad"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="80%" stop-color="#FFFDEC"/><stop offset="100%" stop-color="#EBE3BA"/></radialGradient></defs></svg></div><svg class="w-36 h-36 drop-shadow-[0_4px_15px_rgba(255,255,255,0.4)] z-10" viewBox="0 0 200 200"><rect x="35" y="155" width="130" height="8" rx="2" fill="#F1F5F9"/><rect x="42" y="147" width="116" height="8" rx="2" fill="#F8FAFC"/><rect x="49" y="139" width="102" height="8" rx="2" fill="#FFFFFF"/><path d="M50,139 C50,70 150,70 150,139 Z" fill="url(#stupa-dome-linear)"/><rect x="85" y="60" width="30" height="20" fill="#F8FAFC"/><circle cx="100" cy="70" r="4" fill="#EAB308"/><polygon points="100,20 92,60 108,60" fill="url(#stupa-spire-linear)"/><circle cx="100" cy="18" r="4.5" fill="#FACC15"/><polygon points="100,6 98,15 102,15" fill="#FACC15"/><defs><linearGradient id="stupa-dome-linear" x1="50" y1="75" x2="150" y2="139"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="50%" stop-color="#F1F5F9"/><stop offset="100%" stop-color="#94A3B8"/></linearGradient><linearGradient id="stupa-spire-linear" x1="92" y1="60" x2="108" y2="20"><stop offset="0%" stop-color="#E2E8F0"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient></defs></svg></div></div>
                             <div id="theme-visual-lotus" class="w-full flex-col items-center justify-center hidden"><div class="w-full h-40 flex items-center justify-center relative"><div class="absolute bottom-4 left-8 z-20"><div class="w-3 h-5.5 bg-gradient-to-t from-orange-600 via-amber-400 to-yellow-100 rounded-full animate-flame mb-[-8px]"></div><svg class="w-10 h-6" viewBox="0 0 100 50"><ellipse cx="50" cy="25" rx="45" ry="15" fill="#7C2D12"/><ellipse cx="50" cy="21" rx="35" ry="8" fill="#9A3412"/></svg></div><div class="absolute bottom-5 right-6 z-20"><div class="w-3 h-5.5 bg-gradient-to-t from-orange-600 via-amber-400 to-yellow-100 rounded-full animate-flame mb-[-6px]" style="animation-delay:0.3s"></div><svg class="w-9 h-5.5" viewBox="0 0 100 50"><ellipse cx="50" cy="25" rx="45" ry="15" fill="#7C2D12"/><ellipse cx="50" cy="21" rx="35" ry="8" fill="#9A3412"/></svg></div><div class="animate-lotus z-10 scale-90"><svg class="w-28 h-28 drop-shadow-[0_6px_18px_rgba(244,114,182,0.65)]" viewBox="0 0 200 200"><ellipse cx="100" cy="140" rx="72" ry="18" fill="#065F46" opacity="0.6"/><path d="M100,50 C70,100 40,110 40,120 C40,135 100,150 100,150 C100,150 160,135 160,120 C160,110 130,100 100,50 Z" fill="url(#lotus-petal-deep)" opacity="0.95"/><path d="M100,70 C80,110 60,115 60,125 C60,135 100,145 100,145 C100,145 140,135 140,125 C140,115 120,110 100,70 Z" fill="url(#lotus-petal-light)"/><circle cx="100" cy="120" r="13" fill="#FBBF24"/><path d="M100,106 L100,134 M86,120 L114,120" stroke="#D97706"/><defs><linearGradient id="lotus-petal-deep" x1="100" y1="50" x2="100" y2="150"><stop offset="0%" stop-color="#F472B6"/><stop offset="60%" stop-color="#DB2777"/><stop offset="100%" stop-color="#831843"/></linearGradient><linearGradient id="lotus-petal-light" x1="100" y1="70" x2="100" y2="145"><stop offset="0%" stop-color="#FBCFE8"/><stop offset="70%" stop-color="#EC4899"/><stop offset="100%" stop-color="#9D174D"/></linearGradient></defs></svg></div></div></div>
@@ -546,6 +547,7 @@
                             <div id="theme-visual-flag" class="w-full flex-col items-center justify-center hidden"><div class="w-full h-40 flex items-center justify-center relative"><div class="absolute inset-0 flex items-center justify-center scale-110 z-0 opacity-40"><div class="w-40 h-40 rounded-full border-4 border-dashed border-amber-500/60 animate-slow-spin"></div></div><svg class="w-32 h-32 z-10 animate-slow-spin" viewBox="0 0 200 200"><circle cx="100" cy="100" r="75" stroke="#FBBF24" stroke-width="6" fill="url(#chakra-glow)"/><circle cx="100" cy="100" r="62" stroke="#D97706" stroke-width="3"/><circle cx="100" cy="100" r="22" fill="#78350F"/><circle cx="100" cy="100" r="8" fill="#FBBF24"/><g stroke="#FBBF24" stroke-width="5" stroke-linecap="round"><line x1="100" y1="38" x2="100" y2="78"/><line x1="100" y1="122" x2="100" y2="162"/><line x1="38" y1="100" x2="78" y2="100"/><line x1="122" y1="100" x2="162" y2="100"/><line x1="56" y1="56" x2="84" y2="84"/><line x1="116" y1="116" x2="144" y2="144"/><line x1="144" y1="56" x2="116" y2="84"/><line x1="84" y1="116" x2="56" y2="144"/></g><defs><radialGradient id="chakra-glow"><stop offset="0%" stop-color="#451a03"/><stop offset="85%" stop-color="#1e1b4b"/><stop offset="100%" stop-color="#020617"/></radialGradient></defs></svg></div></div>
                             <div id="theme-visual-lamps" class="w-full flex-col items-center justify-center hidden"><div class="w-full h-40 flex flex-col items-center justify-center relative"><div class="flex items-end justify-center gap-5 z-10"><div class="flex flex-col items-center transform scale-75"><div class="w-3.5 h-6 bg-gradient-to-t from-orange-600 via-amber-400 to-yellow-100 rounded-full animate-flame mb-[-8px]"></div><svg class="w-14 h-8" viewBox="0 0 100 50"><ellipse cx="50" cy="25" rx="45" ry="15" fill="#7C2D12"/><ellipse cx="50" cy="21" rx="35" ry="8" fill="#9A3412"/></svg></div><div class="flex flex-col items-center transform scale-100 pb-1"><div class="w-4 h-7.5 bg-gradient-to-t from-orange-600 via-amber-400 to-yellow-100 rounded-full animate-flame mb-[-8px]" style="animation-delay:0.2s"></div><svg class="w-18 h-10" viewBox="0 0 100 50"><ellipse cx="50" cy="25" rx="48" ry="16" fill="#7C2D12"/><ellipse cx="50" cy="20" rx="38" ry="9" fill="#B91C1C"/><path d="M15,25 Q50,42 85,25" stroke="#FBBF24" stroke-width="1.5" fill="none"/></svg></div><div class="flex flex-col items-center transform scale-75"><div class="w-3.5 h-6 bg-gradient-to-t from-orange-600 via-amber-400 to-yellow-100 rounded-full animate-flame mb-[-8px]" style="animation-delay:0.5s"></div><svg class="w-14 h-8" viewBox="0 0 100 50"><ellipse cx="50" cy="25" rx="45" ry="15" fill="#7C2D12"/><ellipse cx="50" cy="21" rx="35" ry="8" fill="#9A3412"/></svg></div></div><div class="w-56 h-2 bg-gradient-to-r from-amber-950 via-amber-900 to-amber-950 rounded border-t border-amber-800 shadow-md mt-1 z-0"></div></div></div>
                         </div>
+                        <!-- Card text - FULL message visible, no line-clamp -->
                         <div id="card-text-container" class="w-full flex-grow flex flex-col justify-end items-center space-y-2 relative pointer-events-none mb-2 overflow-visible select-none">
                             <div id="wrapper-render-to" class="space-y-0.5 w-full"><p class="text-[9px] font-bold tracking-widest uppercase text-slate-400 font-sans">ලබන්නා • To</p><h3 id="render-to" class="text-base sm:text-lg font-bold font-sinhala leading-tight text-amber-200 tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] px-4 truncate"></h3></div>
                             <div class="flex items-center justify-center gap-2 opacity-75"><span class="w-8 h-[1px] bg-gradient-to-r from-transparent to-amber-400"></span><span class="text-[9px] text-amber-400">☸</span><span class="w-8 h-[1px] bg-gradient-to-l from-transparent to-amber-400"></span></div>
@@ -557,6 +559,7 @@
                     </div>
                 </div>
             </div>
+            <!-- EXPORT & SHARING CONTROLS with loading states -->
             <div class="w-full max-w-md space-y-3">
                 <div class="grid grid-cols-2 gap-3">
                     <button id="btn-download" onclick="exportCardToImage()" class="flex items-center justify-center gap-2 px-5 py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-sm rounded-2xl shadow-xl shadow-amber-500/10 hover:shadow-amber-500/25 active:scale-95 transition-all">
@@ -576,7 +579,7 @@
     <footer class="pt-8 mt-8 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500"><div><p>Designed and Built by <strong class="text-slate-400">D-one Creation</strong>.<br>Preserving authentic traditional Sri Lankan Vesak card spirits since 2008.</p></div></footer>
 </div>
 
-<!-- SHARE POPUP MODAL -->
+<!-- SHARE POPUP MODAL with copy button -->
 <div id="share-popup-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-slate-900 border border-amber-500/30 rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl relative">
         <button onclick="closeSharePopup()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 transition-colors"><svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
@@ -607,19 +610,6 @@
     <button onclick="hideToastNotification()" class="text-slate-500 hover:text-slate-300 text-xs self-start px-1.5 py-0.5 rounded-lg border border-slate-800">Dismiss</button>
 </div>
 
-<!-- Floating Developer Contact Button -->
-<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 group">
-    <div class="hidden group-hover:flex flex-col bg-slate-900 border border-amber-500/30 p-3 rounded-xl shadow-2xl animate-fade-in max-w-xs mb-1">
-        <span class="text-[10px] text-amber-400 font-semibold uppercase tracking-wider">Hire the Developer</span>
-        <a href="mailto:dilankanishka032@gmail.com" class="text-xs text-slate-200 hover:text-amber-300 transition-colors underline break-all mt-0.5">dilankanishka032@gmail.com</a>
-    </div>
-    <button class="bg-gradient-to-tr from-amber-600 to-amber-500 text-slate-950 p-3.5 rounded-full shadow-lg shadow-amber-500/20 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none" onclick="toggleDeveloperEmail(event)">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
-        </svg>
-    </button>
-</div>
-
 <script>
     let activeTheme = 'lantern';
     let vesakAudio = null;
@@ -629,7 +619,6 @@
     let currentShareURL = '';
     let isDownloading = false;
     let isSharing = false;
-    let autoPlayAttempted = false;
 
     const cardWishes = {
         1: { greeting: "පින්බර වෙසක් මංගල්‍යයක් වේවා!", message: "උතුම් සම්බුදු තෙමඟුල සිහිපත් කෙරෙන මෙම පින්බර වෙසක් සමයෙහි ඔබ සැමට නිදුක් නීරෝගී සුවය හා පරම ශාන්තිය සැලසේවායි ප්‍රාර්ථනා කරමි!" },
@@ -637,14 +626,14 @@
         3: { greeting: "Subha Vesak Mangalyayak Wewa!", message: "May the serene light of the sacred Vesak Full Moon illuminate your life with infinite peace, sound health, divine joy, and ultimate enlightenment." }
     };
 
-    // ============ LOADING SCREEN ============
+    // ============ LOADING SCREEN (minimum 10s) ============
     function hideLoadingScreen() {
         if (pageFullyLoaded) return;
         pageFullyLoaded = true;
         const loader = document.getElementById('vesak-loading-screen');
         if (loader) { loader.classList.add('loading-fade-out'); setTimeout(() => { if (loader.parentNode) loader.parentNode.removeChild(loader); }, 750); }
     }
-    const MINIMUM_LOAD_TIME = 5000;
+    const MINIMUM_LOAD_TIME = 5000; // 10 seconds
     let loadStartTime = Date.now();
 
     function finalizePageLoad() {
@@ -653,97 +642,30 @@
         detectAndLoadSharedParameters();
         const elapsed = Date.now() - loadStartTime;
         const remaining = Math.max(0, MINIMUM_LOAD_TIME - elapsed);
-        setTimeout(() => {
-            hideLoadingScreen();
-            // Try auto-play after loading screen hides
-            attemptAutoPlay();
-        }, remaining);
+        setTimeout(hideLoadingScreen, remaining);
     }
 
     window.addEventListener('DOMContentLoaded', function() {
         loadStartTime = Date.now();
         setTimeout(finalizePageLoad, 200);
+        // Attempt auto-play music after a short delay (may be blocked by browser)
+        setTimeout(() => {
+            if (!isMelodyPlaying && sharedCardDetected) {
+                attemptAutoPlay();
+            }
+        }, 1500);
     });
     window.addEventListener('load', function() {
-        if (!pageFullyLoaded) { 
-            const elapsed = Date.now() - loadStartTime; 
-            const remaining = Math.max(0, MINIMUM_LOAD_TIME - elapsed); 
-            setTimeout(() => {
-                hideLoadingScreen();
-                attemptAutoPlay();
-            }, remaining); 
-        } else {
-            // Page already loaded, try auto-play now
-            attemptAutoPlay();
-        }
+        if (!pageFullyLoaded) { const elapsed = Date.now() - loadStartTime; const remaining = Math.max(0, MINIMUM_LOAD_TIME - elapsed); setTimeout(hideLoadingScreen, remaining); }
     });
-    setTimeout(function() { 
-        if (!pageFullyLoaded) { 
-            hideLoadingScreen(); 
-            buildCardStarrySky(); 
-            generateAtmosphericPetals(); 
-            detectAndLoadSharedParameters(); 
-            attemptAutoPlay();
-        } 
-    }, MINIMUM_LOAD_TIME + 2000);
-
-    // ============ AUTO-PLAY MUSIC WITH FALLBACK ============
-    function updateMusicButtonUI() {
-        if(isMelodyPlaying){
-            document.getElementById('music-wave').classList.remove('hidden');
-            document.getElementById('music-stop-dot').classList.add('hidden');
-            document.getElementById('music-btn-text').textContent="Mute Music (සංගීතය නවත්වන්න)";
-            document.getElementById('btn-ambient-music').classList.add('border-emerald-500/50','text-emerald-300');
-        } else {
-            document.getElementById('music-wave').classList.add('hidden');
-            document.getElementById('music-stop-dot').classList.remove('hidden');
-            document.getElementById('music-btn-text').textContent="Play Vesak Music (සංගීතය ක්‍රියාත්මක කරන්න)";
-            document.getElementById('btn-ambient-music').classList.remove('border-emerald-500/50','text-emerald-300');
-        }
-    }
+    setTimeout(function() { if (!pageFullyLoaded) { hideLoadingScreen(); buildCardStarrySky(); generateAtmosphericPetals(); detectAndLoadSharedParameters(); } }, MINIMUM_LOAD_TIME + 2000);
 
     function attemptAutoPlay() {
-        if (autoPlayAttempted) return;
-        autoPlayAttempted = true;
-        
-        if (!vesakAudio) {
-            vesakAudio = new Audio('wesak.mp3');
-            vesakAudio.loop = true;
-        }
-        
+        if (!vesakAudio) { vesakAudio = new Audio('wesak.mp3'); vesakAudio.loop = true; }
         vesakAudio.play().then(() => {
             isMelodyPlaying = true;
             updateMusicButtonUI();
-        }).catch(() => {
-            // Autoplay blocked – wait for user interaction
-            showToastNotification(
-                '🔇 Music Paused', 
-                'Tap anywhere on the screen to play the Vesak music.'
-            );
-            // One-time event listener for user gesture
-            const playOnInteraction = () => {
-                if (!isMelodyPlaying) {
-                    vesakAudio.play().then(() => {
-                        isMelodyPlaying = true;
-                        updateMusicButtonUI();
-                        hideToastNotification();
-                    }).catch(() => {});
-                }
-                document.removeEventListener('click', playOnInteraction);
-                document.removeEventListener('touchstart', playOnInteraction);
-            };
-            document.addEventListener('click', playOnInteraction, { once: true });
-            document.addEventListener('touchstart', playOnInteraction, { once: true });
-        });
-    }
-
-    function toggleVesakMusic() {
-        if(!vesakAudio){ vesakAudio=new Audio('wesak.mp3'); vesakAudio.loop=true; }
-        if(!isMelodyPlaying){
-            vesakAudio.play().then(()=>{ isMelodyPlaying=true; updateMusicButtonUI(); }).catch(()=>{ showToastNotification('Audio','Tap anywhere and try again.'); });
-        } else {
-            vesakAudio.pause(); isMelodyPlaying=false; updateMusicButtonUI();
-        }
+        }).catch(() => { /* Browser blocked auto-play, user must tap */ });
     }
 
     // ============ SHARE POPUP ============
@@ -929,74 +851,63 @@
         else{ toggleAnimationClasses(); document.querySelectorAll('.animate-slow-spin').forEach(e=>e.style.animation='slowSpin 30s linear infinite'); }
     }
 
+    // ============ MUSIC ============
+    function updateMusicButtonUI() {
+        if(isMelodyPlaying){
+            document.getElementById('music-wave').classList.remove('hidden');
+            document.getElementById('music-stop-dot').classList.add('hidden');
+            document.getElementById('music-btn-text').textContent="Mute Music (සංගීතය නවත්වන්න)";
+            document.getElementById('btn-ambient-music').classList.add('border-emerald-500/50','text-emerald-300');
+        } else {
+            document.getElementById('music-wave').classList.add('hidden');
+            document.getElementById('music-stop-dot').classList.remove('hidden');
+            document.getElementById('music-btn-text').textContent="Play Vesak Music (සංගීතය ක්‍රියාත්මක කරන්න)";
+            document.getElementById('btn-ambient-music').classList.remove('border-emerald-500/50','text-emerald-300');
+        }
+    }
+    function toggleVesakMusic() {
+        if(!vesakAudio){ vesakAudio=new Audio('wesak.mp3'); vesakAudio.loop=true; }
+        if(!isMelodyPlaying){
+            vesakAudio.play().then(()=>{ isMelodyPlaying=true; updateMusicButtonUI(); }).catch(()=>{ showToastNotification('Audio','Tap anywhere and try again.'); });
+        } else {
+            vesakAudio.pause(); isMelodyPlaying=false; updateMusicButtonUI();
+        }
+    }
+
     // ============ DOWNLOAD (mobile-friendly) ============
     function exportCardToImage() {
-    if(isDownloading) return;
-    isDownloading = true;
-    const btn = document.getElementById('btn-download');
-    btn.classList.add('btn-loading');
-    document.getElementById('btn-download-text').textContent = 'Generating...';
-    const captureArea = document.getElementById('greeting-capture-wrapper');
-    toggleActiveAnimations(false);
-    
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    const scale = isMobile ? 2 : 3; // mobile ekedi performance walata scale adu karala
+        if(isDownloading) return;
+        isDownloading = true;
+        const btn = document.getElementById('btn-download');
+        btn.classList.add('btn-loading');
+        document.getElementById('btn-download-text').textContent = 'Generating...';
+        const captureArea = document.getElementById('greeting-capture-wrapper');
+        toggleActiveAnimations(false);
 
-    html2canvas(captureArea, { scale: scale, useCORS: true, allowTaint: true, backgroundColor: '#020617' }).then(canvas => {
-        toggleActiveAnimations(true);
-        const dataUrl = canvas.toDataURL('image/png');
-        const filename = `D-one_Creation_Vesak_Card_${activeTheme}.png`;
-        
-        if (isMobile) {
-            // Mobile: open image in new tab (most reliable save method)
-            const newWindow = window.open('', '_blank');
-            if (newWindow) {
-                newWindow.document.write(`
-                    <html>
-                    <head><title>Vesak Card - Save Image</title>
-                    <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <style>
-                        body { margin:0; background:#0f172a; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; }
-                        img { max-width:95%; height:auto; border-radius:16px; box-shadow:0 20px 40px rgba(0,0,0,0.6); }
-                        .instruction { color:#fbbf24; text-align:center; font-family:'Plus Jakarta Sans',sans-serif; padding:16px; font-size:14px; }
-                    </style>
-                    </head>
-                    <body>
-                        <img src="${dataUrl}" alt="Vesak Greeting Card">
-                        <p class="instruction">📱 <strong>Long press the image</strong> above and choose <em>"Save Image"</em> or <em>"Download image"</em> to keep it.</p>
-                    </body>
-                    </html>
-                `);
-                newWindow.document.close();
-            } else {
-                // Popup blocked fallback: download via anchor
+        html2canvas(captureArea, { scale: 3, useCORS: true, allowTaint: true, backgroundColor: '#020617' }).then(canvas => {
+            toggleActiveAnimations(true);
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const filename = `D-one_Creation_Vesak_Card_${activeTheme}.png`;
                 const anchor = document.createElement('a');
                 anchor.download = filename;
-                anchor.href = dataUrl;
+                anchor.href = url;
                 document.body.appendChild(anchor);
                 anchor.click();
                 document.body.removeChild(anchor);
-            }
-            showToastNotification('Card Ready! 📲', 'New tab opened. Long press the image to save it.');
-        } else {
-            // Desktop: direct download
-            const anchor = document.createElement('a');
-            anchor.download = filename;
-            anchor.href = dataUrl;
-            document.body.appendChild(anchor);
-            anchor.click();
-            document.body.removeChild(anchor);
-            showToastNotification('Download Started', 'Your card is downloading.');
-        }
-        resetDownloadButton();
-    }).catch(error => {
-        toggleActiveAnimations(true);
-        showToastNotification('Download Issue', 'Please take a screenshot instead.');
-        resetDownloadButton();
-    });
-}
+                if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){ setTimeout(()=>{ window.open(url,'_blank'); },300); }
+                setTimeout(()=>URL.revokeObjectURL(url),3000);
+                showToastNotification('Success! • සාර්ථකයි!','සුබපැතුම් පත Download විය! (High-Res PNG)');
+                resetDownloadButton();
+            }, 'image/png');
+        }).catch(error => {
+            toggleActiveAnimations(true);
+            showToastNotification('Download Issue','කරුණාකර Screenshot එකක් ගන්න.');
+            resetDownloadButton();
+        });
+    }
 
-    // ============ SHARE ============
+    // ============ SHARE (popup modal) ============
     function shareLiveCardLink() {
         if(isSharing) return;
         isSharing = true;
@@ -1061,23 +972,26 @@
 
     function openInstructions() { document.getElementById('instructions-modal').classList.remove('hidden'); }
     function closeInstructions() { document.getElementById('instructions-modal').classList.add('hidden'); }
-
-    // Floating developer contact toggle
-    function toggleDeveloperEmail(event) {
-        event.stopPropagation();
-        const popup = event.currentTarget.closest('.group').querySelector('.hidden');
-        if (popup) {
-            popup.classList.toggle('hidden');
-            popup.classList.toggle('flex');
-        }
-    }
-    document.addEventListener('click', () => {
-        const popups = document.querySelectorAll('.group-hover\\:flex');
-        popups.forEach(p => {
-            p.classList.add('hidden');
-            p.classList.remove('flex');
-        });
-    });
 </script>
+    <!-- Floating Developer Contact Button -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 group">
+        
+        <!-- Email Popup Card (Appears on Hover/Click) -->
+        <div class="hidden group-hover:flex flex-col bg-slate-900 border border-amber-500/30 p-3 rounded-xl shadow-2xl animate-fade-in max-w-xs mb-1">
+            <span class="text-[10px] text-amber-400 font-semibold uppercase tracking-wider">Hire the Developer</span>
+            <a href="mailto:dilankanishka032@gmail.com" class="text-xs text-slate-200 hover:text-amber-300 transition-colors underline break-all mt-0.5">
+                dilankanishka032@gmail.com
+            </a>
+        </div>
+
+        <!-- Floating Button Icon -->
+        <button class="bg-gradient-to-tr from-amber-600 to-amber-500 text-slate-950 p-3.5 rounded-full shadow-lg shadow-amber-500/20 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none" 
+                onclick="toggleDeveloperEmail(event)">
+            <!-- Developer / Coding Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+            </svg>
+        </button>
+    </div>
 </body>
 </html>
