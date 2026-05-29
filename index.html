@@ -607,7 +607,7 @@
     <button onclick="hideToastNotification()" class="text-slate-500 hover:text-slate-300 text-xs self-start px-1.5 py-0.5 rounded-lg border border-slate-800">Dismiss</button>
 </div>
 
-<!-- Floating Developer Contact Button -->
+<!-- Floating Developer Contact Button
 <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 group">
     <div class="hidden group-hover:flex flex-col bg-slate-900 border border-amber-500/30 p-3 rounded-xl shadow-2xl animate-fade-in max-w-xs mb-1">
         <span class="text-[10px] text-amber-400 font-semibold uppercase tracking-wider">Hire the Developer</span>
@@ -618,7 +618,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
         </svg>
     </button>
-</div>
+</div> -->
 
 <script>
     let activeTheme = 'lantern';
@@ -931,70 +931,36 @@
 
     // ============ DOWNLOAD (mobile-friendly) ============
     function exportCardToImage() {
-    if(isDownloading) return;
-    isDownloading = true;
-    const btn = document.getElementById('btn-download');
-    btn.classList.add('btn-loading');
-    document.getElementById('btn-download-text').textContent = 'Generating...';
-    const captureArea = document.getElementById('greeting-capture-wrapper');
-    toggleActiveAnimations(false);
-    
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    const scale = isMobile ? 2 : 3; // mobile ekedi performance walata scale adu karala
+        if(isDownloading) return;
+        isDownloading = true;
+        const btn = document.getElementById('btn-download');
+        btn.classList.add('btn-loading');
+        document.getElementById('btn-download-text').textContent = 'Generating...';
+        const captureArea = document.getElementById('greeting-capture-wrapper');
+        toggleActiveAnimations(false);
 
-    html2canvas(captureArea, { scale: scale, useCORS: true, allowTaint: true, backgroundColor: '#020617' }).then(canvas => {
-        toggleActiveAnimations(true);
-        const dataUrl = canvas.toDataURL('image/png');
-        const filename = `D-one_Creation_Vesak_Card_${activeTheme}.png`;
-        
-        if (isMobile) {
-            // Mobile: open image in new tab (most reliable save method)
-            const newWindow = window.open('', '_blank');
-            if (newWindow) {
-                newWindow.document.write(`
-                    <html>
-                    <head><title>Vesak Card - Save Image</title>
-                    <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <style>
-                        body { margin:0; background:#0f172a; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; }
-                        img { max-width:95%; height:auto; border-radius:16px; box-shadow:0 20px 40px rgba(0,0,0,0.6); }
-                        .instruction { color:#fbbf24; text-align:center; font-family:'Plus Jakarta Sans',sans-serif; padding:16px; font-size:14px; }
-                    </style>
-                    </head>
-                    <body>
-                        <img src="${dataUrl}" alt="Vesak Greeting Card">
-                        <p class="instruction">📱 <strong>Long press the image</strong> above and choose <em>"Save Image"</em> or <em>"Download image"</em> to keep it.</p>
-                    </body>
-                    </html>
-                `);
-                newWindow.document.close();
-            } else {
-                // Popup blocked fallback: download via anchor
+        html2canvas(captureArea, { scale: 3, useCORS: true, allowTaint: true, backgroundColor: '#020617' }).then(canvas => {
+            toggleActiveAnimations(true);
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const filename = `D-one_Creation_Vesak_Card_${activeTheme}.png`;
                 const anchor = document.createElement('a');
                 anchor.download = filename;
-                anchor.href = dataUrl;
+                anchor.href = url;
                 document.body.appendChild(anchor);
                 anchor.click();
                 document.body.removeChild(anchor);
-            }
-            showToastNotification('Card Ready! 📲', 'New tab opened. Long press the image to save it.');
-        } else {
-            // Desktop: direct download
-            const anchor = document.createElement('a');
-            anchor.download = filename;
-            anchor.href = dataUrl;
-            document.body.appendChild(anchor);
-            anchor.click();
-            document.body.removeChild(anchor);
-            showToastNotification('Download Started', 'Your card is downloading.');
-        }
-        resetDownloadButton();
-    }).catch(error => {
-        toggleActiveAnimations(true);
-        showToastNotification('Download Issue', 'Please take a screenshot instead.');
-        resetDownloadButton();
-    });
-}
+                if(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){ setTimeout(()=>{ window.open(url,'_blank'); },300); }
+                setTimeout(()=>URL.revokeObjectURL(url),3000);
+                showToastNotification('Success! • සාර්ථකයි!','සුබපැතුම් පත Download විය! (High-Res PNG)');
+                resetDownloadButton();
+            }, 'image/png');
+        }).catch(error => {
+            toggleActiveAnimations(true);
+            showToastNotification('Download Issue','කරුණාකර Screenshot එකක් ගන්න.');
+            resetDownloadButton();
+        });
+    }
 
     // ============ SHARE ============
     function shareLiveCardLink() {
