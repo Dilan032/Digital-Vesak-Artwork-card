@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vesak Aura — Professional Greeting Card Studio by D-one Creation</title>
+    
+    <!-- Tailwind CSS for premium responsive layout styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- html2canvas for capturing premium high-DPI image cards -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- Google Fonts for majestic Sinhala and modern display typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&family=Noto+Serif+Sinhala:wght=400;700;900&family=Cinzel:wght=600;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for high-quality inline icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        sinhala: ['"Noto Serif Sinhala"', 'serif'],
+                        display: ['"Cinzel"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Modern Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.4);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(234, 179, 8, 0.3);
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(234, 179, 8, 0.6);
+        }
+
+        /* Ambient 2008 Retro Card Animations */
+        @keyframes rotateLantern {
+            0% { transform: rotate(-4deg); }
+            50% { transform: rotate(4deg); }
+            100% { transform: rotate(-4deg); }
+        }
+        .animate-lantern {
+            animation: rotateLantern 5s ease-in-out infinite;
+            transform-origin: top center;
+        }
+
+        @keyframes swayStreamer {
+            0% { transform: rotate(-2.5deg) skewX(-1.5deg); }
+            50% { transform: rotate(3deg) skewX(2deg); }
+            100% { transform: rotate(-2.5deg) skewX(-1.5deg); }
+        }
+        .animate-streamer {
+            animation: swayStreamer 3.5s ease-in-out infinite;
+            transform-origin: top center;
+        }
+
+        @keyframes flameFlicker {
+            0%, 100% { transform: scale(1) rotate(-1deg); opacity: 0.95; }
+            30% { transform: scale(1.08) rotate(1.5deg); opacity: 1; }
+            70% { transform: scale(0.93) rotate(-1deg); opacity: 0.9; }
+        }
+        .animate-flame {
+            animation: flameFlicker 1s ease-in-out infinite;
+            transform-origin: bottom center;
+        }
+
+        @keyframes softPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; filter: drop-shadow(0 0 15px rgba(234, 179, 8, 0.5)); }
+            50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 25px rgba(234, 179, 8, 0.85)); }
+        }
+        .animate-aurapulse {
+            animation: softPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes floatLotus {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(1.5deg); }
+        }
+        .animate-lotus {
+            animation: floatLotus 4.5s ease-in-out infinite;
+        }
+
+        @keyframes starryTwinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.15); }
+        }
+        .twinkle-star {
+            animation: starryTwinkle 2.5s ease-in-out infinite;
+        }
+
+        @keyframes slowSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .animate-slow-spin {
+            animation: slowSpin 30s linear infinite;
+        }
+
+        /* Falling physical petals and lanterns particles for gorgeous atmosphere */
+        @keyframes fall {
+            0% { transform: translateY(-5%) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+        }
+        .falling-petal {
+            position: absolute;
+            pointer-events: none;
+            z-index: 15;
+            animation: fall linear infinite;
+        }
+
+        #fold-crease-line {
+            display: none;
+        }
+        .double-folding #fold-crease-line {
+            display: block !important;
+            left: 50% !important;
+            transform: translateX(-50%);
+            border-left: 2px dashed rgba(234, 179, 8, 0.45) !important;
+            height: 100%;
+            top: 0;
+            bottom: 0;
+        }
+        .double-folding #card-main-layout {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            grid-template-rows: auto 1fr auto !important;
+            gap: 16px !important;
+            padding: 12px !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+        .double-folding #art-header-ornament-parent {
+            grid-column: span 2 !important;
+            grid-row: 1 !important;
+        }
+        .double-folding #visuals-wrapper {
+            grid-column: 2 !important;
+            grid-row: 2 !important;
+            max-height: 85% !important;
+            height: 100% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            align-self: center !important;
+        }
+        .double-folding #card-text-container {
+            grid-column: 1 !important;
+            grid-row: 2 !important;
+            height: 100% !important;
+            max-height: 100% !important;
+            justify-content: center !important;
+            align-self: center !important;
+            margin-bottom: 0 !important;
+            padding: 0 12px !important;
+        }
+        .double-folding #card-footer-parent {
+            grid-column: span 2 !important;
+            grid-row: 3 !important;
+            margin-top: 8px !important;
+        }
+        .double-folding #render-greeting {
+            font-size: 1.15rem !important;
+            line-height: 1.4 !important;
+        }
+        .double-folding #render-message {
+            font-size: 0.72rem !important;
+            line-height: 1.5 !important;
+            max-height: 110px !important;
+            display: -webkit-box !important;
+            -webkit-line-clamp: 4 !important;
+            -webkit-box-orient: vertical !important;
+            overflow: hidden;
+        }
+        .double-folding #render-to {
+            font-size: 0.95rem !important;
+        }
+        .double-folding #render-from {
+            font-size: 0.82rem !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans relative overflow-x-hidden selection:bg-yellow-500/30 selection:text-yellow-200">
+
+    <!-- Ambient glowing backgrounds -->
+    <div class="absolute w-[350px] h-[350px] bg-amber-500/10 rounded-full filter blur-[100px] top-[-50px] left-[-50px] pointer-events-none z-0"></div>
+    <div class="absolute w-[450px] h-[450px] bg-teal-500/5 rounded-full filter blur-[120px] bottom-[-50px] right-[-50px] pointer-events-none z-0"></div>
+
+    <!-- Falling Petals Screen Container -->
+    <div id="petals-container" class="absolute inset-0 overflow-hidden pointer-events-none z-10"></div>
+
+    <!-- Main Wrapper App -->
+    <div class="relative z-20 max-w-7xl mx-auto px-4 py-4 md:py-6 lg:py-8 flex flex-col min-h-screen">
+        
+        <!-- App Header with Branding -->
+        <header class="flex flex-col md:flex-row justify-between items-center gap-4 pb-4 mb-6 border-b border-slate-800/80">
+            <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-tr from-amber-500 to-yellow-400 p-2.5 rounded-2xl shadow-xl shadow-amber-500/15">
+                    <svg class="w-6 h-6 text-slate-950" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-black text-xl tracking-wider bg-gradient-to-r from-amber-300 via-yellow-100 to-slate-100 bg-clip-text text-transparent font-display">VESAK AURA</span>
+                        <span class="px-2 py-0.5 bg-amber-500/15 border border-amber-500/30 rounded-full text-[9px] font-bold text-amber-400 tracking-widest uppercase">STUDIO</span>
+                    </div>
+                    <p class="text-xs text-slate-400 font-medium">A Premium Digital Vesak Artwork Experience by <span class="text-amber-400 font-bold">D-one Creation</span></p>
+                </div>
+            </div>
+
+            <!-- Global Audioscape Controller and Help -->
+            <div class="flex items-center gap-2.5 w-full md:w-auto justify-end">
+                
+                <!-- Gentle Buddha Ambient Music Player Toggle -->
+                <button id="btn-ambient-music" onclick="toggleVesakMusic()" class="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-900 hover:border-amber-500/50 text-slate-300 hover:text-amber-300 transition-all text-xs duration-200 shadow-md">
+                    <span id="music-wave" class="relative flex h-2 w-2 hidden">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span id="music-stop-dot" class="h-2 w-2 rounded-full bg-slate-500"></span>
+                    <span class="font-bold" id="music-btn-text">Play Vesak Music (සංගීතය ක්‍රියාත්මක කරන්න)</span>
+                </button>
+
+                <button onclick="openInstructions()" class="p-2 rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-slate-100 hover:border-slate-700 transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Gift Card Loaded Mode Banner -->
+        <div id="shared-gift-banner" class="hidden bg-gradient-to-r from-amber-500/20 via-yellow-500/10 to-transparent border border-amber-500/30 p-4 rounded-2xl mb-6 flex flex-col sm:flex-row justify-between items-center gap-4 animate-pulse">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎁</span>
+                <div>
+                    <h3 class="text-sm font-extrabold text-amber-300">ඔබට වෙසක් සුබපැතුම් පතක් ලැබී ඇත!</h3>
+                    <p class="text-xs text-slate-300">Someone has sent you this beautiful customized card. Listen to the soothing music below!</p>
+                </div>
+            </div>
+            <button onclick="switchToCreateMode()" class="w-full sm:w-auto px-5 py-2 bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-black rounded-xl shadow-lg transition-transform active:scale-95">
+                ✏️ Create My Own Card (මමත් එකක් හදන්නම්)
+            </button>
+        </div>
+
+        <!-- MOBILE SCREEN VIEWS SELECTOR (Only visible on mobile screens) -->
+        <div class="flex lg:hidden bg-slate-900/80 border border-slate-800 p-1.5 rounded-2xl mb-6">
+            <button id="tab-btn-edit" onclick="switchMobileTab('edit')" class="flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                ✏️ Customize Card (හදන්න)
+            </button>
+            <button id="tab-btn-view" onclick="switchMobileTab('view')" class="flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all text-slate-400">
+                🖼️ Live Card Preview (බලන්න)
+            </button>
+        </div>
+
+        <!-- Main Studio Workspace Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start flex-grow">
+            
+            <!-- LEFT PANEL: Simplified controls panel (5 cols on Desktop) -->
+            <section id="studio-controls-panel" class="lg:col-span-5 space-y-5">
+                
+                <!-- Easy instructions tip -->
+                <div class="p-4 bg-gradient-to-b from-slate-900/80 to-slate-900/40 border border-slate-800/80 rounded-2xl">
+                    <h2 class="text-xs font-bold text-amber-400 tracking-wider flex items-center gap-1.5 mb-1">
+                        <span>💡</span> QUICK GUIDE • පහසු මඟ පෙන්වීම
+                    </h2>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        පහත පියවර 3 සම්පූර්ණ කර ඔබගේ නම සහිත වෙසක් සුබපැතුම් පත සාදාගෙන මිතුරන්ට යවන්න (Share කරන්න).
+                    </p>
+                </div>
+
+                <!-- STEP 1: Theme presets -->
+                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 space-y-3.5">
+                    <div class="flex justify-between items-center border-b border-slate-800/60 pb-2">
+                        <h3 class="font-bold text-xs uppercase tracking-widest text-amber-400 flex items-center gap-1.5">
+                            <span class="px-2 py-0.5 bg-amber-500/20 text-amber-300 text-[9px] font-bold rounded-lg font-mono">STEP 1</span>
+                            <span>Select Theme (කාඩ් එකේ හැඩය)</span>
+                        </h3>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="applyTheme('lantern')" id="btn-tab-lantern" class="theme-tab-item flex flex-col items-center justify-center p-2.5 rounded-xl border border-amber-500/40 bg-amber-500/10 text-center transition-all group">
+                            <span class="text-xl mb-1 group-hover:scale-110 transition-transform">🏮</span>
+                            <span class="text-[10px] font-bold text-amber-200 block leading-tight">Vesak Koodu</span>
+                            <span class="text-[8px] text-slate-400 mt-0.5 font-mono">Traditional</span>
+                        </button>
+                        
+                        <button onclick="applyTheme('stupa')" id="btn-tab-stupa" class="theme-tab-item flex flex-col items-center justify-center p-2.5 rounded-xl border border-slate-800 bg-slate-900/30 text-center transition-all group">
+                            <span class="text-xl mb-1 group-hover:scale-110 transition-transform">🛕</span>
+                            <span class="text-[10px] font-bold text-slate-200 block leading-tight">Siri Stupa</span>
+                            <span class="text-[8px] text-slate-400 mt-0.5 font-mono">Ruwanweli</span>
+                        </button>
+                        
+                        <button onclick="applyTheme('lotus')" id="btn-tab-lotus" class="theme-tab-item flex flex-col items-center justify-center p-2.5 rounded-xl border border-slate-800 bg-slate-900/30 text-center transition-all group">
+                            <span class="text-xl mb-1 group-hover:scale-110 transition-transform">🪷</span>
+                            <span class="text-[10px] font-bold text-slate-200 block leading-tight">Lotus Pond</span>
+                            <span class="text-[8px] text-slate-400 mt-0.5 font-mono">Peaceful</span>
+                        </button>
+
+                        <!-- Theme 4: Samadhi Buddha Statue -->
+                        <button onclick="applyTheme('buddha')" id="btn-tab-buddha" class="theme-tab-item flex flex-col items-center justify-center p-2.5 rounded-xl border border-slate-800 bg-slate-900/30 text-center transition-all group">
+                            <span class="text-xl mb-1 group-hover:scale-110 transition-transform">🙏</span>
+                            <span class="text-[10px] font-bold text-slate-200 block leading-tight">Samadhi</span>
+                            <span class="text-[8px] text-slate-400 mt-0.5 font-mono">Buddha Aura</span>
+                        </button>
+
+                        <!-- Theme 5: Buddhist Flag/Chakra -->
+                        <button onclick="applyTheme('flag')" id="btn-tab-flag" class="theme-tab-item flex flex-col items-center justify-center p-2.5 rounded-xl border border-slate-800 bg-slate-900/30 text-center transition-all group">
+                            <span class="text-xl mb-1 group-hover:scale-110 transition-transform">☸️</span>
+                            <span class="text-[10px] font-bold text-slate-200 block leading-tight">Dhamma</span>
+                            <span class="text-[8px] text-slate-400 mt-0.5 font-mono">Chakra Ring</span>
+                        </button>
+
+                        <!-- Theme 6: Pahan Stand -->
+                        <button onclick="applyTheme('lamps')" id="btn-tab-lamps" class="theme-tab-item flex flex-col items-center justify-center p-2.5 rounded-xl border border-slate-800 bg-slate-900/30 text-center transition-all group">
+                            <span class="text-xl mb-1 group-hover:scale-110 transition-transform">🕯️</span>
+                            <span class="text-[10px] font-bold text-slate-200 block leading-tight">Pahan Pela</span>
+                            <span class="text-[8px] text-slate-400 mt-0.5 font-mono">Oil Lamps</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Writing Card Text -->
+                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-800/60 pb-2">
+                        <h3 class="font-bold text-xs uppercase tracking-widest text-amber-400 flex items-center gap-1.5">
+                            <span class="px-2 py-0.5 bg-amber-500/20 text-amber-300 text-[9px] font-bold rounded-lg font-mono">STEP 2</span>
+                            <span>Greetings & Names (සුබපැතුම් පණිවිඩය)</span>
+                        </h3>
+                    </div>
+
+                    <!-- Recipient Text Field -->
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold text-slate-300 flex justify-between items-center">
+                            <span>To / ලබන්නා (කාටද එවන්නේ):</span>
+                            <span class="text-[10px] text-slate-500">Optional</span>
+                        </label>
+                        <input type="text" id="field-to" oninput="syncFormToCard()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500 transition-all placeholder:text-slate-600" placeholder="උදා: ආදරණීය අම්මා ඇතුළු පවුලේ සැමට">
+                    </div>
+
+                    <!-- Sender Name Field -->
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold text-slate-300 flex justify-between items-center">
+                            <span>From / එවන්නා (ඔබගේ නම):</span>
+                            <span class="text-[10px] text-amber-400 font-bold">* Required</span>
+                        </label>
+                        <input type="text" id="field-from" oninput="syncFormToCard()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500 transition-all placeholder:text-slate-600 font-semibold" placeholder="උදා: සෙනෙහෙබර චාමර">
+                    </div>
+
+                    <!-- Beautiful One-Tap Presets (Sinhala & English) -->
+                    <div class="space-y-1.5 pt-1">
+                        <label class="block text-[11px] font-extrabold text-amber-300 uppercase tracking-wider">Tap a quick wish below • ඉක්මන් පණිවිඩයක් තෝරන්න:</label>
+                        <div class="grid grid-cols-1 gap-2">
+                            <button onclick="setGreetingPreset(1)" class="text-left text-[11px] p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-amber-500/40 text-slate-300 hover:text-amber-100 transition-all flex items-center justify-between">
+                                <span class="truncate font-semibold">පින්බර වෙසක් මංගල්‍යයක් වේවා!</span>
+                                <span class="text-[9px] text-amber-500 font-mono font-bold bg-amber-500/5 px-1.5 py-0.5 rounded border border-amber-500/15">S-01</span>
+                            </button>
+                            <button onclick="setGreetingPreset(2)" class="text-left text-[11px] p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-amber-500/40 text-slate-300 hover:text-amber-100 transition-all flex items-center justify-between">
+                                <span class="truncate font-semibold">සිරි සදහම් සිසිලසින් හදවත් නිවේවා!</span>
+                                <span class="text-[9px] text-amber-500 font-mono font-bold bg-amber-500/5 px-1.5 py-0.5 rounded border border-amber-500/15">S-02</span>
+                            </button>
+                            <button onclick="setGreetingPreset(3)" class="text-left text-[11px] p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-amber-500/40 text-slate-300 hover:text-amber-100 transition-all flex items-center justify-between">
+                                <span class="truncate font-semibold">Wishing you a peaceful and enlightened Vesak!</span>
+                                <span class="text-[9px] text-amber-500 font-mono font-bold bg-amber-500/5 px-1.5 py-0.5 rounded border border-amber-500/15">E-01</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Custom Message Text Area -->
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold text-slate-300">Detailed Blessing Message (දීර්ඝ සුබපැතුම):</label>
+                        <textarea id="field-message" oninput="syncFormToCard()" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-amber-500 transition-all resize-none placeholder:text-slate-600 leading-relaxed" placeholder="වෙසක් සුබපැතුම් පණිවිඩය මෙහි ලියන්න..."></textarea>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Styling and Motion (Text Size slider option removed completely) -->
+                <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-4 space-y-4">
+                    <div class="flex justify-between items-center border-b border-slate-800/60 pb-2">
+                        <h3 class="font-bold text-xs uppercase tracking-widest text-amber-400 flex items-center gap-1.5">
+                            <span class="px-2 py-0.5 bg-amber-500/20 text-amber-300 text-[9px] font-bold rounded-lg font-mono">STEP 3</span>
+                            <span>Borders, Colors & Interactive Effects</span>
+                        </h3>
+                    </div>
+
+                    <!-- Color Picker and Frame Select -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-300">Aura Text Color:</label>
+                            <div class="flex items-center gap-2 bg-slate-950 p-1.5 rounded-xl border border-slate-800">
+                                <input type="color" id="style-text-color" oninput="applyVisualStyles()" value="#FCD34D" class="w-8 h-8 rounded-lg bg-transparent border-none cursor-pointer">
+                                <span class="text-xs text-slate-400 font-mono font-bold uppercase" id="lbl-text-color">#FCD34D</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="block text-xs font-bold text-slate-300">Classic Frame Border:</label>
+                            <select id="style-border-frame" onchange="applyVisualStyles()" class="w-full h-11 bg-slate-950 border border-slate-800 rounded-xl px-2.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500">
+                                <option value="minimal-thin">Clean Minimalist</option>
+                                <option value="gold-double">Double Elegant Gold</option>
+                                <option value="buddhist-stripes">Buddhist Flag Strips</option>
+                                <option value="retro-amber">Retro Soft Amber</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Motion Toggle Panel -->
+                    <div class="space-y-2 pt-1">
+                        <label class="block text-xs font-bold text-slate-300">Live Sensory Effects (පණ ඇති සජීවීකරණ):</label>
+                        
+                        <div class="space-y-2">
+                            <!-- Toggle Swaying -->
+                            <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-slate-700 cursor-pointer transition-all">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-base">🏮</span>
+                                    <div>
+                                        <div class="text-[11px] font-bold text-slate-200 leading-normal">Swaying Elements (කූඩු / සරසිලි සෙලවීම)</div>
+                                    </div>
+                                </div>
+                                <input type="checkbox" id="motion-sway-lantern" checked onchange="toggleAnimationClasses()" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-500 accent-amber-500">
+                            </label>
+
+                            <!-- Toggle Candle Flicker -->
+                            <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-slate-700 cursor-pointer transition-all">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-base">🔥</span>
+                                    <div>
+                                        <div class="text-[11px] font-bold text-slate-200 leading-normal">Flickering Flame (සජීවී පහන් සිල)</div>
+                                    </div>
+                                </div>
+                                <input type="checkbox" id="motion-flicker-flame" checked onchange="toggleAnimationClasses()" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-500 accent-amber-500">
+                            </label>
+
+                            <!-- Toggle Stars & Auras -->
+                            <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 hover:border-slate-700 cursor-pointer transition-all">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-base">✨</span>
+                                    <div>
+                                        <div class="text-[11px] font-bold text-slate-200 leading-normal">Twinkling Cosmic Atmosphere (දිදුලන රන්සිලු)</div>
+                                    </div>
+                                </div>
+                                <input type="checkbox" id="motion-cosmic-aura" checked onchange="toggleAnimationClasses()" class="w-4 h-4 rounded text-amber-500 focus:ring-amber-500 accent-amber-500">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom D-one Creation watermark card -->
+                <div class="p-4 bg-amber-500/5 border border-amber-500/20 rounded-2xl flex items-start gap-3">
+                    <span class="text-amber-400 text-lg">🎖️</span>
+                    <div class="space-y-1">
+                        <p class="text-xs text-amber-200 leading-relaxed">
+                            This generator is powered by <strong>D-one Creation</strong> rendering pipeline. You can export ultra high resolution greeting cards instantly or share links directly with zero setup cost.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- RIGHT PANEL: Live Display Viewport (7 cols on Desktop) -->
+            <section id="studio-viewport-panel" class="hidden lg:col-span-7 lg:flex flex-col items-center justify-center space-y-5">
+
+                <!-- ENTIRE SCREENSHOT CONTAINER FOR DOWNLOADS -->
+                <div id="greeting-capture-wrapper" class="relative overflow-hidden w-full max-w-md aspect-[4/5] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-slate-800/80 transition-all duration-500 select-none">
+                    
+                    <!-- THE CARD BOX -->
+                    <div id="spiritual-card-surface" class="w-full h-full p-5 sm:p-6 flex flex-col justify-between items-center text-center relative overflow-hidden bg-slate-950 select-none">
+                        
+                        <!-- FRAME BORDER -->
+                        <div id="artistic-frame" class="absolute inset-2 pointer-events-none z-30 transition-all duration-300 border-[10px] border-double border-amber-500/60 rounded-xl"></div>
+
+                        <!-- TWINKLING STARS LAYER -->
+                        <div id="starry-overlay" class="absolute inset-0 pointer-events-none z-10 opacity-70"></div>
+
+                        <!-- ATMOSPHERE ORANGE/PURPLE GLOW -->
+                        <div id="glow-ambient-layer" class="absolute inset-0 pointer-events-none z-0"></div>
+
+                        <!-- MIDDLE FOLDING CREASE (Only visible on Double Folding Layout mode) -->
+                        <div id="fold-crease-line" class="hidden absolute top-0 bottom-0 left-1/2 w-0 border-l border-dashed border-amber-500/30 z-30"></div>
+
+                        <!-- DYNAMIC GRID CONTAINER FOR ADAPTIVE DOUBLE FOLDING LAYOUT -->
+                        <div id="card-main-layout" class="w-full h-full flex flex-col justify-between items-center z-20">
+
+                            <!-- TOP HEADER DECORATION -->
+                            <div id="art-header-ornament-parent" class="w-full flex flex-col items-center justify-start pointer-events-none mt-1">
+                                <div class="flex items-center gap-1.5 text-amber-400/90 tracking-widest text-[10px] sm:text-xs" id="art-header-ornament">
+                                    <span>✦</span><span>☸</span><span>✦</span>
+                                </div>
+                            </div>
+
+                            <!-- DYNAMIC HERO DECORATIONS - Carefully optimized scaling limits to avoid squashing text -->
+                            <div id="visuals-wrapper" class="w-full flex-grow flex flex-col justify-center items-center py-2 relative pointer-events-none max-h-[42%] overflow-hidden">
+                                
+                                <!-- THEME 1: TRADITIONAL VESAK KOODU LANTERN -->
+                                <div id="theme-visual-lantern" class="w-full flex-col items-center justify-center hidden">
+                                    <div class="w-44 h-44 flex flex-col items-center justify-start animate-lantern relative">
+                                        <svg class="w-36 h-36 drop-shadow-[0_0_25px_rgba(234,179,8,0.7)]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Outer diamond frame -->
+                                            <polygon points="100,20 150,100 100,180 50,100" fill="url(#lantern-glow-center)" stroke="#FFD700" stroke-width="2"/>
+                                            
+                                            <!-- Decorative internal frame wings -->
+                                            <polygon points="100,20 100,100 50,100" fill="url(#wing-linear-1)" stroke="#FFA500" stroke-width="1"/>
+                                            <polygon points="100,20 100,100 150,100" fill="url(#wing-linear-2)" stroke="#FFA500" stroke-width="1"/>
+                                            <polygon points="100,180 100,100 50,100" fill="url(#wing-linear-3)" stroke="#FFA500" stroke-width="1"/>
+                                            <polygon points="100,180 100,100 150,100" fill="url(#wing-linear-4)" stroke="#FFA500" stroke-width="1"/>
+
+                                            <!-- Outer structural points -->
+                                            <polygon points="50,100 25,100 50,85" fill="#FF4500" opacity="0.8"/>
+                                            <polygon points="50,100 25,100 50,115" fill="#FF4500" opacity="0.8"/>
+                                            <polygon points="150,100 175,100 150,85" fill="#FF4500" opacity="0.8"/>
+                                            <polygon points="150,100 175,100 150,115" fill="#FF4500" opacity="0.8"/>
+
+                                            <polygon points="100,20 100,5 115,20" fill="#FF4500" opacity="0.8"/>
+                                            <polygon points="100,20 100,5 85,20" fill="#FF4500" opacity="0.8"/>
+
+                                            <!-- Color Gradients definitions -->
+                                            <defs>
+                                                <radialGradient id="lantern-glow-center" cx="50%" cy="50%" r="50%">
+                                                    <stop offset="0%" stop-color="#FFFFFF"/>
+                                                    <stop offset="35%" stop-color="#FFF38A"/>
+                                                    <stop offset="100%" stop-color="#EA580C"/>
+                                                </radialGradient>
+                                                <linearGradient id="wing-linear-1" x1="50" y1="100" x2="100" y2="20">
+                                                    <stop offset="0%" stop-color="#EF4444"/>
+                                                    <stop offset="100%" stop-color="#F59E0B"/>
+                                                </linearGradient>
+                                                <linearGradient id="wing-linear-2" x1="150" y1="100" x2="100" y2="20">
+                                                    <stop offset="0%" stop-color="#3B82F6"/>
+                                                    <stop offset="100%" stop-color="#10B981"/>
+                                                </linearGradient>
+                                                <linearGradient id="wing-linear-3" x1="50" y1="100" x2="100" y2="180">
+                                                    <stop offset="0%" stop-color="#F59E0B"/>
+                                                    <stop offset="100%" stop-color="#EF4444"/>
+                                                </linearGradient>
+                                                <linearGradient id="wing-linear-4" x1="150" y1="100" x2="100" y2="180">
+                                                    <stop offset="0%" stop-color="#10B981"/>
+                                                    <stop offset="100%" stop-color="#3B82F6"/>
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+
+                                        <!-- Hanging traditional streamers (Rallu) -->
+                                        <div class="absolute bottom-6 left-[20%] flex justify-between w-[60%] pointer-events-none z-10">
+                                            <div class="w-1.5 bg-gradient-to-b from-amber-400 to-red-600 h-10 animate-streamer origin-top rounded-b-sm"></div>
+                                            <div class="w-1.5 bg-gradient-to-b from-yellow-300 to-orange-500 h-14 animate-streamer origin-top rounded-b-sm" style="animation-delay: 0.4s;"></div>
+                                            <div class="w-2 bg-gradient-to-b from-white to-amber-500 h-16 animate-streamer origin-top rounded-b-sm" style="animation-delay: 0.2s;"></div>
+                                            <div class="w-1.5 bg-gradient-to-b from-yellow-300 to-orange-500 h-14 animate-streamer origin-top rounded-b-sm" style="animation-delay: 0.6s;"></div>
+                                            <div class="w-1.5 bg-gradient-to-b from-amber-400 to-red-600 h-10 animate-streamer origin-top rounded-b-sm" style="animation-delay: 0.9s;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- THEME 2: SRI RUWANWELISAYA SHINING STUPA -->
+                                <div id="theme-visual-stupa" class="w-full flex-col items-center justify-center hidden">
+                                    <div class="w-full h-40 flex items-center justify-center relative">
+                                        <!-- Glorious glowing light rays background -->
+                                        <div class="absolute inset-0 flex items-center justify-center scale-110 z-0 animate-aurapulse">
+                                            <svg class="w-52 h-52 opacity-50" viewBox="0 0 200 200" fill="none">
+                                                <g stroke="url(#temple-light-grad)" stroke-width="4">
+                                                    <line x1="100" y1="100" x2="200" y2="100" />
+                                                    <line x1="100" y1="100" x2="0" y2="100" />
+                                                    <line x1="100" y1="100" x2="100" y2="200" />
+                                                    <line x1="100" y1="100" x2="100" y2="0" />
+                                                    <line x1="100" y1="100" x2="175" y2="175" />
+                                                    <line x1="100" y1="100" x2="25" y2="25" />
+                                                    <line x1="100" y1="100" x2="175" y2="25" />
+                                                    <line x1="100" y1="100" x2="25" y2="175" />
+                                                </g>
+                                                <circle cx="100" cy="115" r="45" fill="url(#moon-glow-grad)" filter="drop-shadow(0 0 20px rgba(255,255,230,0.85))"/>
+                                                <defs>
+                                                    <radialGradient id="temple-light-grad" cx="50%" cy="50%" r="50%">
+                                                        <stop offset="0%" stop-color="#FFFFFF"/>
+                                                        <stop offset="25%" stop-color="#FFD700"/>
+                                                        <stop offset="60%" stop-color="#FF3B30"/>
+                                                        <stop offset="100%" stop-color="#0056B3" stop-opacity="0"/>
+                                                    </radialGradient>
+                                                    <radialGradient id="moon-glow-grad" cx="50%" cy="50%" r="50%">
+                                                        <stop offset="0%" stop-color="#FFFFFF"/>
+                                                        <stop offset="80%" stop-color="#FFFDEC"/>
+                                                        <stop offset="100%" stop-color="#EBE3BA"/>
+                                                    </radialGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+
+                                        <!-- Elegant detailed Stupa silhouette -->
+                                        <svg class="w-36 h-36 drop-shadow-[0_4px_15px_rgba(255,255,255,0.4)] z-10" viewBox="0 0 200 200" fill="none">
+                                            <!-- Terraces base (Pesa Walalu) -->
+                                            <rect x="35" y="155" width="130" height="8" rx="2" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5"/>
+                                            <rect x="42" y="147" width="116" height="8" rx="2" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1"/>
+                                            <rect x="49" y="139" width="102" height="8" rx="2" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
+
+                                            <!-- Dome body -->
+                                            <path d="M50,139 C50,70 150,70 150,139 Z" fill="url(#stupa-dome-linear)" stroke="#CBD5E1" stroke-width="1.5" />
+
+                                            <!-- Square terrace (Hatharas Kotuwa) -->
+                                            <rect x="85" y="60" width="30" height="20" fill="#F8FAFC" stroke="#94A3B8" stroke-width="1.5"/>
+                                            <circle cx="100" cy="70" r="4" fill="#EAB308"/>
+
+                                            <!-- Koth Kerella Spire -->
+                                            <polygon points="100,20 92,60 108,60" fill="url(#stupa-spire-linear)" stroke="#94A3B8" stroke-width="1"/>
+                                            <line x1="94" y1="52" x2="106" y2="52" stroke="#475569" stroke-width="1"/>
+                                            <line x1="96" y1="44" x2="104" y2="44" stroke="#475569" stroke-width="1"/>
+                                            <line x1="98" y1="36" x2="102" y2="36" stroke="#475569" stroke-width="1"/>
+
+                                            <!-- Shining gold pinnacle -->
+                                            <circle cx="100" cy="18" r="4.5" fill="#FACC15" filter="drop-shadow(0 0 6px #FACC15)"/>
+                                            <polygon points="100,6 98,15 102,15" fill="#FACC15"/>
+
+                                            <defs>
+                                                <linearGradient id="stupa-dome-linear" x1="50" y1="75" x2="150" y2="139">
+                                                    <stop offset="0%" stop-color="#FFFFFF"/>
+                                                    <stop offset="50%" stop-color="#F1F5F9"/>
+                                                    <stop offset="100%" stop-color="#94A3B8"/>
+                                                </linearGradient>
+                                                <linearGradient id="stupa-spire-linear" x1="92" y1="60" x2="108" y2="20">
+                                                    <stop offset="0%" stop-color="#E2E8F0"/>
+                                                    <stop offset="100%" stop-color="#FFFFFF"/>
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <!-- THEME 3: TRANQUIL LOTUS & GLOWING OIL LAMPS -->
+                                <div id="theme-visual-lotus" class="w-full flex-col items-center justify-center hidden">
+                                    <div class="w-full h-40 flex items-center justify-center relative">
+                                        
+                                        <!-- Glowing clay oil lamps at bottom left -->
+                                        <div class="absolute bottom-4 left-8 z-20 flex flex-col items-center">
+                                            <div class="w-3 h-5.5 bg-gradient-to-t from-orange-600 via-amber-400 to-yellow-100 rounded-full animate-flame filter drop-shadow-[0_0_12px_rgba(251,191,36,0.95)] mb-[-8px] z-30"></div>
+                                            <svg class="w-10 h-6" viewBox="0 0 100 50">
+                                                <ellipse cx="50" cy="25" rx="45" ry="15" fill="#7C2D12" stroke="#3F1204" stroke-width="1.5"/>
+                                                <ellipse cx="50" cy="21" rx="35" ry="8" fill="#9A3412"/>
+                                                <line x1="50" y1="13" x2="50" y2="21" stroke="#3F1204" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+
+                                        <!-- Glowing clay oil lamps at bottom right -->
+                                        <div class="absolute bottom-5 right-6 z-20 flex flex-col items-center">
+                                            <div class="w-3 h-5.5 bg-gradient-to-t from-orange-600 via-amber-400 to-yellow-100 rounded-full animate-flame filter drop-shadow-[0_0_10px_rgba(251,191,36,0.95)] mb-[-6px] z-30" style="animation-delay: 0.3s"></div>
+                                            <svg class="w-9 h-5.5" viewBox="0 0 100 50">
+                                                <ellipse cx="50" cy="25" rx="45" ry="15" fill="#7C2D12" stroke="#3F1204" stroke-width="1.5"/>
+                                                <ellipse cx="50" cy="21" rx="35" ry="8" fill="#9A3412"/>
+                                                <line x1="50" y1="13" x2="50" y2="21" stroke="#3F1204" stroke-width="2"/>
+                                            </svg>
+                                        </div>
+
+                                        <!-- Floating majestic pink lotus flower -->
+                                        <div class="animate-lotus z-10 scale-90">
+                                            <svg class="w-28 h-28 drop-shadow-[0_6px_18px_rgba(244,114,182,0.65)]" viewBox="0 0 200 200" fill="none">
+                                                <!-- Green lily pad leaf -->
+                                                <ellipse cx="100" cy="140" rx="72" ry="18" fill="#065F46" opacity="0.6" stroke="#047857" stroke-width="1.5"/>
+                                                
+                                                <!-- Lotus outer deep pink petals -->
+                                                <path d="M100,50 C70,100 40,110 40,120 C40,135 100,150 100,150 C100,150 160,135 160,120 C160,110 130,100 100,50 Z" fill="url(#lotus-petal-deep)" opacity="0.95"/>
+                                                
+                                                <!-- Lotus inner soft pink petals -->
+                                                <path d="M100,70 C80,110 60,115 60,125 C60,135 100,145 100,145 C100,145 140,135 140,125 C140,115 120,110 100,70 Z" fill="url(#lotus-petal-light)"/>
+
+                                                <!-- Glowing yellow center pollen -->
+                                                <circle cx="100" cy="120" r="13" fill="#FBBF24" filter="drop-shadow(0 0 6px #F59E0B)"/>
+                                                <path d="M100,106 L100,134 M86,120 L114,120" stroke="#D97706" stroke-width="1.5"/>
+
+                                                <defs>
+                                                    <linearGradient id="lotus-petal-deep" x1="100" y1="50" x2="100" y2="150">
+                                                        <stop offset="0%" stop-color="#F472B6"/>
+                                                        <stop offset="60%" stop-color="#DB2777"/>
+                                                        <stop offset="100%" stop-color="#831843"/>
+                                                    </linearGradient>
+                                                    <linearGradient id="lotus-petal-light" x1="100" y1="70" x2="100" y2="145">
+                                                        <stop offset="0%" stop-color="#FBCFE8"/>
+                                                        <stop offset="70%" stop-color="#EC4899"/>
+                                                        <stop offset="100%" stop-color="#9D174D"/>
+                                                    </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+
+                                        <!-- Ripple circles waves -->
+                                        <div class="absolute bottom-6 w-40 h-3 border border-teal-500/20 rounded-full z-0 scale-y-50 animate-ping" style="animation-duration: 5s;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- THEME 4: SAMADHI BUDDHA SILHOUETTE WITH PULSING RANSILU AURA -->
+                                <div id="theme-visual-buddha" class="w-full flex-col items-center justify-center hidden">
+                                    <div class="w-full h-40 flex items-center justify-center relative">
+                                        <!-- Pulsing Buddha Ransilu (6-Color Buddhist Aura) -->
+                                        <div class="absolute inset-0 flex items-center justify-center scale-110 z-0 animate-aurapulse">
+                                            <svg class="w-36 h-36 opacity-75" viewBox="0 0 200 200" fill="none">
+                                                <circle cx="100" cy="90" r="55" fill="url(#ransilu-aura-grad)" filter="drop-shadow(0 0 25px rgba(245,158,11,0.7))"/>
+                                                <defs>
+                                                    <radialGradient id="ransilu-aura-grad" cx="50%" cy="50%" r="50%">
+                                                        <stop offset="0%" stop-color="#FFFFFF"/>
+                                                        <stop offset="20%" stop-color="#FFD700" stop-opacity="0.9"/>
+                                                        <stop offset="40%" stop-color="#FF3B30" stop-opacity="0.7"/>
+                                                        <stop offset="60%" stop-color="#3B82F6" stop-opacity="0.5"/>
+                                                        <stop offset="80%" stop-color="#FFFFFF" stop-opacity="0.3"/>
+                                                        <stop offset="100%" stop-color="#FF9500" stop-opacity="0"/>
+                                                    </radialGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+
+                                        <!-- Buddha Statue Silhouette sitting under a Bodhi Tree Branch -->
+                                        <svg class="w-36 h-36 z-10" viewBox="0 0 200 200" fill="none">
+                                            <!-- Bodhi Leaves Hanging from Top -->
+                                            <path d="M30,20 C50,15 70,30 90,15 M10,10 C40,5 80,40 100,20" stroke="#10B981" stroke-width="1.5" opacity="0.3"/>
+                                            <path d="M45,22 C40,32 50,42 45,50 C42,42 35,32 45,22 Z" fill="#047857" opacity="0.4"/>
+                                            <path d="M75,17 C70,27 80,37 75,45 C72,37 65,27 75,17 Z" fill="#047857" opacity="0.4"/>
+
+                                            <!-- Samadhi Buddha Silhouette in rich deep bronze color -->
+                                            <path d="M100,42 C105,42 109,46 109,51 C109,56 105,62 100,62 C95,62 91,56 91,51 C91,46 95,42 100,42 Z" fill="#1E1B4B"/> <!-- Head -->
+                                            <path d="M98,39 L102,39 L100,34 Z" fill="#FBBF24"/> <!-- Siraspata (Flame pinnacle) -->
+                                            <path d="M85,62 C90,60 110,60 115,62 L122,80 C125,85 130,95 130,105 C130,120 115,130 100,130 C85,130 70,120 70,105 C70,95 75,85 78,80 Z" fill="#1E1B4B"/> <!-- Upper Body & Robe -->
+                                            <path d="M60,125 C60,115 75,115 100,115 C125,115 140,115 140,125 C140,135 125,142 100,142 C75,142 60,135 60,125 Z" fill="#12102C"/> <!-- Meditating Folded Legs Base -->
+                                            <path d="M88,112 C92,108 108,108 112,112 C108,114 92,114 88,112 Z" fill="#1E1B4B"/> <!-- Meditating Hands -->
+
+                                            <!-- Lotus Throne underneath -->
+                                            <path d="M50,139 C70,146 130,146 150,139 C155,148 145,152 100,152 C55,152 45,148 50,139 Z" fill="#B45309" stroke="#78350F" stroke-width="1"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <!-- THEME 5: DHAMMA CHAKRA WITH ROTATING DHAMMA WHEEL & SHINING GLOWS -->
+                                <div id="theme-visual-flag" class="w-full flex-col items-center justify-center hidden">
+                                    <div class="w-full h-40 flex items-center justify-center relative">
+                                        <!-- Rotating Aura Backdrop -->
+                                        <div class="absolute inset-0 flex items-center justify-center scale-110 z-0 opacity-40">
+                                            <div class="w-40 h-40 rounded-full border-4 border-dashed border-amber-500/60 animate-slow-spin"></div>
+                                        </div>
+                                        <!-- Concentric Aura Circles -->
+                                        <div class="absolute w-24 h-24 bg-gradient-to-tr from-amber-500/20 via-yellow-400/20 to-transparent rounded-full filter blur-md animate-aurapulse"></div>
+
+                                        <!-- Premium Golden Dhamma Wheel (Dharmachakra) SVG -->
+                                        <svg class="w-32 h-32 z-10 animate-slow-spin" viewBox="0 0 200 200" fill="none">
+                                            <!-- Outer Gold Ring -->
+                                            <circle cx="100" cy="100" r="75" stroke="#FBBF24" stroke-width="6" fill="url(#chakra-glow)"/>
+                                            <circle cx="100" cy="100" r="62" stroke="#D97706" stroke-width="3"/>
+                                            
+                                            <!-- Inner Center Ring -->
+                                            <circle cx="100" cy="100" r="22" fill="#78350F" stroke="#FBBF24" stroke-width="3"/>
+                                            <circle cx="100" cy="100" r="8" fill="#FBBF24"/>
+
+                                            <!-- 8 Spokes (Atha-Manga) representing Noble Eightfold Path -->
+                                            <g stroke="#FBBF24" stroke-width="5" stroke-linecap="round">
+                                                <line x1="100" y1="38" x2="100" y2="78" />
+                                                <line x1="100" y1="122" x2="100" y2="162" />
+                                                <line x1="38" y1="100" x2="78" y2="100" />
+                                                <line x1="122" y1="100" x2="162" y2="100" />
+                                                <line x1="56" y1="56" x2="84" y2="84" />
+                                                <line x1="116" y1="116" x2="144" y2="144" />
+                                                <line x1="144" y1="56" x2="116" y2="84" />
+                                                <line x1="84" y1="116" x2="56" y2="144" />
+                                            </g>
+
+                                            <!-- Little Gems/Dots on Outer Rim -->
+                                            <circle cx="100" cy="21" r="4" fill="#EF4444" filter="drop-shadow(0 0 4px #EF4444)"/>
+                                            <circle cx="100" cy="179" r="4" fill="#EF4444" filter="drop-shadow(0 0 4px #EF4444)"/>
+                                            <circle cx="21" cy="100" r="4" fill="#EF4444" filter="drop-shadow(0 0 4px #EF4444)"/>
+                                            <circle cx="179" cy="100" r="4" fill="#EF4444" filter="drop-shadow(0 0 4px #EF4444)"/>
+
+                                            <defs>
+                                                <radialGradient id="chakra-glow" cx="50%" cy="50%" r="50%">
+                                                    <stop offset="0%" stop-color="#451a03"/>
+                                                    <stop offset="85%" stop-color="#1e1b4b"/>
+                                                    <stop offset="100%" stop-color="#020617"/>
+                                                </radialGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <!-- THEME 6: TRADITIONAL PAHAN PELA / ROWS OF FLICKERING CLAY LAMPS -->
+                                <div id="theme-visual-lamps" class="w-full flex-col items-center justify-center hidden">
+                                    <div class="w-full h-40 flex flex-col items-center justify-center relative">
+                                        <!-- Warm Radiant Orange Ambient Glow -->
+                                        <div class="absolute w-48 h-24 bg-amber-600/10 rounded-full filter blur-xl animate-aurapulse"></div>
+
+                                        <!-- Three Beautiful Traditional Oil Lamps side-by-side with heights offset -->
+                                        <div class="flex items-end justify-center gap-5 z-10">
+                                            
+                                            <!-- Lamp 1 (Left) -->
+                                            <div class="flex flex-col items-center transform scale-75 origin-bottom">
+                                                <div class="w-3.5 h-6 bg-gradient-to-t from-orange-600 via-amber-400 to-yellow-100 rounded-full animate-flame filter drop-shadow-[0_0_12px_rgba(251,191,36,0.95)] mb-[-8px] z-30"></div>
+                                                <svg class="w-14 h-8" viewBox="0 0 100 50">
+                                                    <ellipse cx="50" cy="25" rx="45" ry="15" fill="#7C2D12" stroke="#3F1204" stroke-width="1.5"/>
+                                                    <ellipse cx="50" cy="21" rx="35" ry="8" fill="#9A3412"/>
+                                                </svg>
+                                            </div>
+
+                                            <!-- Lamp 2 (Center - Main) -->
+                                            <div class="flex flex-col items-center transform scale-100 origin-bottom pb-1">
+                                                <div class="w-4 h-7.5 bg-gradient-to-t from-orange-600 via-amber-400 to-yellow-100 rounded-full animate-flame filter drop-shadow-[0_0_15px_rgba(251,191,36,1)] mb-[-8px] z-30" style="animation-delay: 0.2s"></div>
+                                                <svg class="w-18 h-10" viewBox="0 0 100 50">
+                                                    <ellipse cx="50" cy="25" rx="48" ry="16" fill="#7C2D12" stroke="#3F1204" stroke-width="2"/>
+                                                    <ellipse cx="50" cy="20" rx="38" ry="9" fill="#B91C1C"/>
+                                                    <!-- Gold patterns on clay lamp -->
+                                                    <path d="M15,25 Q50,42 85,25" stroke="#FBBF24" stroke-width="1.5" fill="none"/>
+                                                </svg>
+                                            </div>
+
+                                            <!-- Lamp 3 (Right) -->
+                                            <div class="flex flex-col items-center transform scale-75 origin-bottom" style="animation-delay: 0.4s">
+                                                <div class="w-3.5 h-6 bg-gradient-to-t from-orange-600 via-amber-400 to-yellow-100 rounded-full animate-flame filter drop-shadow-[0_0_12px_rgba(251,191,36,0.95)] mb-[-8px] z-30" style="animation-delay: 0.5s"></div>
+                                                <svg class="w-14 h-8" viewBox="0 0 100 50">
+                                                    <ellipse cx="50" cy="25" rx="45" ry="15" fill="#7C2D12" stroke="#3F1204" stroke-width="1.5"/>
+                                                    <ellipse cx="50" cy="21" rx="35" ry="8" fill="#9A3412"/>
+                                                </svg>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- Wooden stand shelf outline -->
+                                        <div class="w-56 h-2 bg-gradient-to-r from-amber-950 via-amber-900 to-amber-950 rounded border-t border-amber-800 shadow-md mt-1 z-0"></div>
+                                        <div class="w-48 h-1 bg-amber-950/80 mx-auto rounded-b"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- LIVE GREETING RENDER DETAILS (Optimized height & padding for absolute readability) -->
+                            <div id="card-text-container" class="w-full flex-grow flex flex-col justify-end items-center space-y-2.5 relative pointer-events-none mb-2 overflow-hidden select-none">
+                                
+                                <!-- To: Recipient tag (Prati) -->
+                                <div id="wrapper-render-to" class="space-y-0.5 w-full">
+                                    <p class="text-[9px] font-bold tracking-widest uppercase text-slate-400 font-sans">ලබන්නා • To</p>
+                                    <h3 id="render-to" class="text-base sm:text-lg font-bold font-sinhala leading-tight text-amber-200 tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] px-4 truncate"></h3>
+                                </div>
+
+                                <!-- Decorative traditional middle line -->
+                                <div class="flex items-center justify-center gap-2 opacity-75">
+                                    <span class="w-8 h-[1px] bg-gradient-to-r from-transparent to-amber-400"></span>
+                                    <span class="text-[9px] text-amber-400">☸</span>
+                                    <span class="w-8 h-[1px] bg-gradient-to-l from-transparent to-amber-400"></span>
+                                </div>
+
+                                <!-- Large artistic calligraphy greeting -->
+                                <div class="w-full px-2">
+                                    <h2 id="render-greeting" class="text-xl sm:text-2xl font-black font-sinhala leading-normal tracking-wide drop-shadow-[0_3px_6px_rgba(0,0,0,1)] uppercase py-0.5"></h2>
+                                </div>
+
+                                <!-- Detailed blessing message text (Ensured clean multiline wrapper) -->
+                                <div class="w-full max-h-[100px] overflow-hidden flex items-center justify-center">
+                                    <p id="render-message" class="text-[11px] sm:text-[12px] font-medium font-sinhala leading-relaxed text-slate-200 px-4 max-w-sm mx-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] line-clamp-4"></p>
+                                </div>
+
+                                <!-- From: Sender tag (Preshaka) -->
+                                <div id="wrapper-render-from" class="pt-2 border-t border-dashed border-amber-500/25 w-full max-w-[200px] mx-auto">
+                                    <p class="text-[8px] text-slate-400 uppercase tracking-widest font-bold">මීට • Regards</p>
+                                    <h4 id="render-from" class="text-xs sm:text-sm font-extrabold font-sinhala text-amber-300 mt-0.5 drop-shadow-[0_1px_3px_rgba(0,0,0,0.95)] truncate"></h4>
+                                </div>
+                            </div>
+
+                            <!-- Card footer brand watermarks -->
+                            <div id="card-footer-parent" class="w-full text-center text-[8px] text-slate-500 font-mono tracking-widest uppercase opacity-60 flex justify-between items-center px-2 border-t border-slate-900/40 pt-1.5 mt-1">
+                                <span>D-ONE CREATION</span>
+                                <span>© 2026 GREETING CARD</span>
+                            </div>
+
+                        </div> <!-- end card-main-layout -->
+
+                    </div>
+                </div>
+
+                <!-- EXPORT & SHARING CONTROLS FOR THE CARD -->
+                <div class="w-full max-w-md space-y-3">
+                    <div class="grid grid-cols-2 gap-3">
+                        
+                        <!-- Premium High Res PNG download -->
+                        <button onclick="exportCardToImage()" class="flex items-center justify-center gap-2 px-5 py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-sm rounded-2xl shadow-xl shadow-amber-500/10 hover:shadow-amber-500/25 active:scale-95 transition-all">
+                            <svg class="w-5 h-5 stroke-slate-950 stroke-[2.5]" fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            <span>Download image</span>
+                        </button>
+
+                        <!-- Share Custom live link -->
+                        <button onclick="shareLiveCardLink()" class="flex items-center justify-center gap-2 px-5 py-3.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-200 font-black text-sm rounded-2xl active:scale-95 transition-all">
+                            <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 10.742l4.184-2.185m0 0L13.15 6h.02a2.25 2.25 0 11-1.071 2.228l-4.184 2.185m0 0A2.25 2.25 0 116 11.25a2.25 2.25 0 011.613-.02l4.184 2.185m0 0l-.15 2.455a2.25 2.25 0 11-1.072-.023l-4.184-2.185M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Share Live Link</span>
+                        </button>
+                    </div>
+
+                    <!-- Custom folding mockup toggle -->
+                    <button id="btn-fold-layout" onclick="toggleFoldingCardLayout()" class="w-full flex flex-col sm:flex-row items-center justify-center gap-2 px-4 py-3 bg-slate-950 border border-dashed border-slate-800 hover:border-amber-500/40 rounded-xl text-xs text-slate-400 hover:text-amber-300 transition-all text-center">
+                        <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-3a2 2 0 00-2-2H9a2 2 0 00-2 2v3a2 2 0 022 2zm5-17V4a2 2 0 012-2h2a2 2 0 012 2v3m-6 0h6" />
+                        </svg>
+                        <span id="txt-fold-btn" class="break-words leading-relaxed">
+                            Switch to Double Folding Layout <span class="block sm:inline-block text-[10px] opacity-80">(ප්‍රින්ට් කිරිමට සුදුසු නැමෙන Layout එක)</span>
+                        </span>
+                    </button>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- Brand Footer -->
+        <footer class="pt-8 mt-8 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+            <div>
+                <p>Designed and Built by <strong class="text-slate-400">D-one Creation</strong>. 
+                    <br>
+                    Preserving authentic traditional Sri Lankan Vesak card spirits since 2008.</p>
+                    <p class="text-xs text-amber-400/80 pt-1">
+                        For similar projects, contact us at 
+                        <a href="mailto:dilankanishka032@gmail.com" class="underline hover:text-amber-300 transition-colors font-medium">
+                            dilankanishka032@gmail.com
+                        </a>
+                    </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- QUICK START HELP MODAL -->
+    <div id="instructions-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 space-y-4 shadow-2xl relative">
+            <button onclick="closeInstructions()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-100 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <h3 class="text-lg font-black text-amber-400 flex items-center gap-2 font-display">
+                <span>🏮</span> VESAK AURA MANUAL • උපදෙස් මාලාව
+            </h3>
+            
+            <div class="text-xs md:text-sm text-slate-300 space-y-3 leading-relaxed">
+                <p>Welcome to <strong>Vesak Aura Studio</strong>, an elegant traditional digital card workshop created proudly by <strong>D-one Creation</strong>.</p>
+                
+                <h4 class="font-extrabold text-amber-300 text-xs uppercase tracking-wider">How to Customize & Share (භාවිතා කරන ආකාරය):</h4>
+                <ul class="list-decimal list-inside space-y-2 pl-1.5 text-xs">
+                    <li><strong class="text-slate-100">පියවර 1:</strong> Select a theme from the classic 6 spiritual presets (Lanterns, Stupa, Lotus, Samadhi Buddha, Dhamma Chakra or Pahan Pela).</li>
+                    <li><strong class="text-slate-100">පියවර 2:</strong> Type the recipient's name (To) and your own name (From). You can also tap one of our quick pre-written Sinhala blessings!</li>
+                    <li><strong class="text-slate-100">පියවර 3:</strong> Click <strong class="text-amber-400">Share Live Link</strong>. Send that link directly to your friends on WhatsApp or Facebook. They can listen to serene temple music and view your card!</li>
+                </ul>
+
+                <p class="text-[11px] text-slate-400">Note: The interactive motion triggers like swaying lanterns, burning oil lamps, and cosmic stars can be controlled live via the checkboxes.</p>
+            </div>
+
+            <button onclick="closeInstructions()" class="w-full py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs rounded-xl transition-all">
+                Great! Let's build a Card (සුබපැතුම් පතක් හදමු)
+            </button>
+        </div>
+    </div>
+
+    <!-- CUSTOM ELEGANT TOAST NOTIFICATION DIALOG (Replaces alert() completely) -->
+    <div id="toast-notification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 max-w-md w-11/12 bg-slate-900/95 backdrop-blur-md border border-amber-500/40 rounded-2xl shadow-2xl p-4 flex gap-3 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="text-amber-400 text-xl flex-shrink-0 pt-0.5">
+            <i class="fas fa-check-circle animate-pulse"></i>
+        </div>
+        <div class="flex-grow space-y-1">
+            <h4 id="toast-title" class="text-xs font-black text-amber-300 uppercase tracking-widest font-sans">Notification</h4>
+            <p id="toast-msg" class="text-xs text-slate-200 leading-relaxed font-medium"></p>
+        </div>
+        <button onclick="hideToastNotification()" class="text-slate-500 hover:text-slate-300 text-xs self-start px-1.5 py-0.5 rounded-lg border border-slate-800">
+            Dismiss
+        </button>
+    </div>
+
+    <!-- Floating Developer Contact Button -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 group">
+        
+        <!-- Email Popup Card (Appears on Hover/Click) -->
+        <div class="hidden group-hover:flex flex-col bg-slate-900 border border-amber-500/30 p-3 rounded-xl shadow-2xl animate-fade-in max-w-xs mb-1">
+            <span class="text-[10px] text-amber-400 font-semibold uppercase tracking-wider">Hire the Developer</span>
+            <a href="mailto:dilankanishka032@gmail.com" class="text-xs text-slate-200 hover:text-amber-300 transition-colors underline break-all mt-0.5">
+                dilankanishka032@gmail.com
+            </a>
+        </div>
+
+        <!-- Floating Button Icon -->
+        <button class="bg-gradient-to-tr from-amber-600 to-amber-500 text-slate-950 p-3.5 rounded-full shadow-lg shadow-amber-500/20 hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none" 
+                onclick="toggleDeveloperEmail(event)">
+            <!-- Developer / Coding Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Small Script for Mobile Click Support -->
+    <script>
+        function toggleDeveloperEmail(event) {
+            event.stopPropagation();
+            const popup = event.currentTarget.previousElementSibling;
+            popup.classList.toggle('hidden');
+            popup.classList.toggle('flex');
+        }
+        
+        // Close popup when clicking anywhere else
+        document.addEventListener('click', () => {
+            const popups = document.querySelectorAll('.group-hover\\:flex');
+            popups.forEach(p => {
+                p.classList.add('hidden');
+                p.classList.remove('flex');
+            });
+        });
+    </script>
+
+    <!-- INTERACTIVE STUDIO JAVASCRIPT LOGIC -->
+    <script>
+        // Core state variables
+        let activeTheme = 'lantern';
+        let doubleFoldingActive = false;
+        
+        // HTML5 Audio state for custom local MP3 file
+        let vesakAudio = null;
+        let isMelodyPlaying = false;
+
+        // Traditional Sinhala Blessing Preset texts
+        const cardWishes = {
+            1: {
+                greeting: "පින්බර වෙසක් මංගල්‍යයක් වේවා!",
+                message: "උතුම් සම්බුදු තෙමඟුල සිහිපත් කෙරෙන මෙම පින්බර වෙසක් සමයෙහි ඔබ සැමට නිදුක් නීරෝගී සුවය හා පරම ශාන්තිය සැලසේවායි ප්‍රාර්ථනා කරමි!"
+            },
+            2: {
+                greeting: "සිරි සදහම් සිසිලසින් හදවත් නිවේවා!",
+                message: "ත්‍රිවිධ රත්නයේ අනන්ත ආශිර්වාදයෙන් යුතුව මේ උතුම් වෙසක් පොහෝ දිනයේදී ඔබගේ සියලු යහපත් ප්‍රාර්ථනාවන් සර්වප්‍රකාරයෙන්ම සාර්ථක වේවා!"
+            },
+            3: {
+                greeting: "Subha Vesak Mangalyayak Wewa!",
+                message: "May the serene light of the sacred Vesak Full Moon illuminate your life with infinite peace, sound health, divine joy, and ultimate enlightenment."
+            }
+        };
+
+        // Window Init
+        window.onload = function() {
+            // Setup falling lotus petals background decoration
+            generateAtmosphericPetals();
+            
+            // Build dynamic retro starlight background inside card
+            buildCardStarrySky();
+
+            // Check if loading a shared card via unique URL parameters
+            detectAndLoadSharedParameters();
+        };
+
+        // Custom Toast Notification System
+        function showToastNotification(title, message) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-msg').innerText = message;
+            
+            // Show toast slide-up
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            // Auto dismiss after 7 seconds
+            setTimeout(() => {
+                hideToastNotification();
+            }, 7000);
+        }
+
+        function hideToastNotification() {
+            const toast = document.getElementById('toast-notification');
+            toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.classList.remove('translate-y-0', 'opacity-100');
+        }
+
+        // Generates floating falling petals throughout the screen
+        function generateAtmosphericPetals() {
+            const container = document.getElementById('petals-container');
+            container.innerHTML = ''; // Reset
+
+            const symbols = ['🌸', '✨', '🪷', '🍂'];
+            const petalCount = 20;
+
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'falling-petal';
+                petal.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                
+                // Random position & speed variables
+                const randomX = Math.random() * 100;
+                const randomDuration = Math.random() * 10 + 8;
+                const randomDelay = Math.random() * 5;
+                const randomSize = Math.random() * 12 + 10;
+
+                petal.style.left = `${randomX}vw`;
+                petal.style.top = `-5%`;
+                petal.style.animationDuration = `${randomDuration}s`;
+                petal.style.animationDelay = `-${randomDelay}s`;
+                petal.style.fontSize = `${randomSize}px`;
+
+                container.appendChild(petal);
+            }
+        }
+
+        // Fills the card canvas with soft twinkling stars
+        function buildCardStarrySky() {
+            const overlay = document.getElementById('starry-overlay');
+            overlay.innerHTML = ''; // reset
+
+            for (let i = 0; i < 30; i++) {
+                const star = document.createElement('div');
+                star.className = 'absolute bg-white rounded-full twinkle-star pointer-events-none';
+                
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const starSize = Math.random() * 2 + 1;
+                const delay = Math.random() * 3;
+                const speed = Math.random() * 2 + 1.5;
+
+                star.style.top = `${posY}%`;
+                star.style.left = `${posX}%`;
+                star.style.width = `${starSize}px`;
+                star.style.height = `${starSize}px`;
+                star.style.animationDelay = `${delay}s`;
+                star.style.animationDuration = `${speed}s`;
+                star.style.boxShadow = `0 0 ${starSize * 3}px rgba(255, 255, 255, 0.9)`;
+
+                overlay.appendChild(star);
+            }
+        }
+
+        // Handles responsive tab switches on mobile screens
+        function switchMobileTab(targetTab) {
+            const btnEdit = document.getElementById('tab-btn-edit');
+            const btnView = document.getElementById('tab-btn-view');
+            const editPanel = document.getElementById('studio-controls-panel');
+            const viewPanel = document.getElementById('studio-viewport-panel');
+
+            if (targetTab === 'edit') {
+                btnEdit.className = "flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all bg-amber-500/15 text-amber-300 border border-amber-500/30";
+                btnView.className = "flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all text-slate-400";
+                editPanel.classList.remove('hidden');
+                viewPanel.classList.add('hidden', 'lg:flex');
+            } else {
+                btnView.className = "flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all bg-amber-500/15 text-amber-300 border border-amber-500/30";
+                btnEdit.className = "flex-1 py-3 text-center text-xs font-bold rounded-xl transition-all text-slate-400";
+                editPanel.classList.add('hidden');
+                viewPanel.classList.remove('hidden', 'lg:flex');
+                viewPanel.classList.add('flex');
+            }
+        }
+
+        // Changes the theme structure (Supports 6 beautiful themes)
+        function applyTheme(themeName) {
+            activeTheme = themeName;
+
+            // Remove highlight states from all option buttons
+            document.querySelectorAll('.theme-tab-item').forEach(el => {
+                el.classList.remove('border-amber-500/40', 'bg-amber-500/10');
+                el.classList.add('border-slate-800', 'bg-slate-900/30');
+                const labels = el.querySelectorAll('span');
+                if (labels[1]) labels[1].className = "text-[10px] font-bold text-slate-200 block leading-tight";
+            });
+
+            // Set current active button highlighted
+            const targetBtn = document.getElementById(`btn-tab-${themeName}`);
+            if (targetBtn) {
+                targetBtn.classList.remove('border-slate-800', 'bg-slate-900/30');
+                targetBtn.classList.add('border-amber-500/40', 'bg-amber-500/10');
+                const labels = targetBtn.querySelectorAll('span');
+                if (labels[1]) labels[1].className = "text-[10px] font-bold text-amber-200 block leading-tight";
+            }
+
+            // Hide all visuals inside card viewport
+            document.getElementById('theme-visual-lantern').style.display = 'none';
+            document.getElementById('theme-visual-stupa').style.display = 'none';
+            document.getElementById('theme-visual-lotus').style.display = 'none';
+            document.getElementById('theme-visual-buddha').style.display = 'none';
+            document.getElementById('theme-visual-flag').style.display = 'none';
+            document.getElementById('theme-visual-lamps').style.display = 'none';
+
+            // Show selected theme visual & adjust background gradient style
+            const cardSurface = document.getElementById('spiritual-card-surface');
+            const ambientLayer = document.getElementById('glow-ambient-layer');
+
+            if (themeName === 'lantern') {
+                document.getElementById('theme-visual-lantern').style.display = 'flex';
+                cardSurface.className = "w-full h-full p-5 sm:p-6 flex flex-col justify-between items-center text-center relative overflow-hidden transition-all duration-500 bg-gradient-to-b from-[#060c23] via-[#050616] to-slate-950";
+                ambientLayer.className = "absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(245,158,11,0.22),transparent_70%)] pointer-events-none z-0";
+            } 
+            else if (themeName === 'stupa') {
+                document.getElementById('theme-visual-stupa').style.display = 'flex';
+                cardSurface.className = "w-full h-full p-5 sm:p-6 flex flex-col justify-between items-center text-center relative overflow-hidden transition-all duration-500 bg-gradient-to-b from-[#180830] via-[#04061a] to-slate-950";
+                ambientLayer.className = "absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.2),transparent_70%)] pointer-events-none z-0";
+            } 
+            else if (themeName === 'lotus') {
+                document.getElementById('theme-visual-lotus').style.display = 'flex';
+                cardSurface.className = "w-full h-full p-5 sm:p-6 flex flex-col justify-between items-center text-center relative overflow-hidden transition-all duration-500 bg-gradient-to-b from-[#011a1a] via-[#020a0d] to-slate-950";
+                ambientLayer.className = "absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.18),transparent_70%)] pointer-events-none z-0";
+            }
+            else if (themeName === 'buddha') {
+                document.getElementById('theme-visual-buddha').style.display = 'flex';
+                cardSurface.className = "w-full h-full p-5 sm:p-6 flex flex-col justify-between items-center text-center relative overflow-hidden transition-all duration-500 bg-gradient-to-b from-[#0a0f2b] via-[#050616] to-slate-950";
+                ambientLayer.className = "absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(251,191,36,0.22),transparent_70%)] pointer-events-none z-0";
+            }
+            else if (themeName === 'flag') {
+                document.getElementById('theme-visual-flag').style.display = 'flex';
+                cardSurface.className = "w-full h-full p-5 sm:p-6 flex flex-col justify-between items-center text-center relative overflow-hidden transition-all duration-500 bg-gradient-to-b from-[#130329] via-[#030617] to-slate-950";
+                ambientLayer.className = "absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(217,119,6,0.2),transparent_70%)] pointer-events-none z-0";
+            }
+            else if (themeName === 'lamps') {
+                document.getElementById('theme-visual-lamps').style.display = 'flex';
+                cardSurface.className = "w-full h-full p-5 sm:p-6 flex flex-col justify-between items-center text-center relative overflow-hidden transition-all duration-500 bg-gradient-to-b from-[#250d03] via-[#0c0401] to-slate-950";
+                ambientLayer.className = "absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(234,88,12,0.24),transparent_70%)] pointer-events-none z-0";
+            }
+
+            // Apply style configurations
+            applyVisualStyles();
+        }
+
+        // Assigns pre-written wishes
+        function setGreetingPreset(presetId) {
+            const data = cardWishes[presetId];
+            if (!data) return;
+
+            document.getElementById('field-message').value = data.message;
+            
+            const displayGreeting = document.getElementById('render-greeting');
+            displayGreeting.textContent = data.greeting;
+
+            if (presetId === 3) {
+                // English typography
+                displayGreeting.style.fontFamily = "'Cinzel', serif";
+                displayGreeting.className = "text-[14px] sm:text-[16px] font-extrabold leading-relaxed tracking-wider text-amber-100 drop-shadow-[0_3px_5px_rgba(0,0,0,0.9)] py-0.5";
+            } else {
+                // Sinhala typography
+                displayGreeting.style.fontFamily = "'Noto Serif Sinhala', serif";
+                displayGreeting.className = "text-lg sm:text-xl font-black leading-relaxed tracking-wider text-amber-100 drop-shadow-[0_3px_6px_rgba(0,0,0,1)] py-0.5";
+            }
+
+            // Update output immediately
+            syncFormToCard();
+        }
+
+        // Transfers form custom text into SVG/HTML elements on card
+        function syncFormToCard() {
+            const valTo = document.getElementById('field-to').value.trim();
+            const valFrom = document.getElementById('field-from').value.trim();
+            const valMessage = document.getElementById('field-message').value.trim();
+
+            const renderTo = document.getElementById('render-to');
+            const renderFrom = document.getElementById('render-from');
+            const renderMessage = document.getElementById('render-message');
+
+            const wrapperTo = document.getElementById('wrapper-render-to');
+            const wrapperFrom = document.getElementById('wrapper-render-from');
+
+            // Receiver Name update
+            if (valTo) {
+                renderTo.textContent = valTo;
+                wrapperTo.style.display = 'block';
+            } else {
+                wrapperTo.style.display = 'none';
+            }
+
+            // Message update
+            if (valMessage) {
+                renderMessage.textContent = valMessage;
+                renderMessage.style.display = 'block';
+            } else {
+                renderMessage.style.display = 'none';
+            }
+
+            // Sender Name update
+            if (valFrom) {
+                renderFrom.textContent = valFrom;
+                wrapperFrom.style.display = 'block';
+            } else {
+                wrapperFrom.style.display = 'none';
+            }
+        }
+
+        // Handles custom border types and color highlights
+        function applyVisualStyles() {
+            const textColor = document.getElementById('style-text-color').value;
+            const borderFrame = document.getElementById('style-border-frame').value;
+
+            // Set color text indicator code label
+            document.getElementById('lbl-text-color').textContent = textColor.toUpperCase();
+
+            // Set greeting main text color
+            const targetGreeting = document.getElementById('render-greeting');
+            targetGreeting.style.color = textColor;
+            targetGreeting.style.textShadow = `0 0 10px ${textColor}cc, 0 0 20px ${textColor}66, 0 3px 5px rgba(0,0,0,0.955)`;
+
+            const frameEl = document.getElementById('artistic-frame');
+
+            if (borderFrame === 'gold-double') {
+                frameEl.style.border = '10px double #EAB308';
+                frameEl.style.opacity = '1';
+                frameEl.style.inset = '8px';
+            } 
+            else if (borderFrame === 'buddhist-stripes') {
+                // Generates the famous 5-colored Buddhist Flag border strips
+                frameEl.style.border = '8px solid transparent';
+                frameEl.style.borderImage = 'repeating-linear-gradient(45deg, #0056B3 0px, #0056B3 8px, #FFD700 8px, #FFD700 16px, #FF3B30 16px, #FF3B30 24px, #FFFFFF 24px, #FFFFFF 32px, #FF9500 32px, #FF9500 40px) 10';
+                frameEl.style.opacity = '0.9';
+                frameEl.style.inset = '6px';
+            } 
+            else if (borderFrame === 'retro-amber') {
+                frameEl.style.border = '6px solid rgba(245,158,11,0.6)';
+                frameEl.style.opacity = '0.85';
+                frameEl.style.inset = '10px';
+                frameEl.style.boxShadow = 'inset 0 0 15px rgba(245,158,11,0.2)';
+            } 
+            else {
+                // minimal-thin
+                frameEl.style.border = '2px solid rgba(255,255,255,0.25)';
+                frameEl.style.opacity = '0.8';
+                frameEl.style.inset = '12px';
+            }
+        }
+
+        // Toggles motion classes on and off based on preferences
+        function toggleAnimationClasses() {
+            const swayPref = document.getElementById('motion-sway-lantern').checked;
+            const flickerPref = document.getElementById('motion-flicker-flame').checked;
+            const starsPref = document.getElementById('motion-cosmic-aura').checked;
+
+            // Swaying elements
+            document.querySelectorAll('.animate-lantern').forEach(el => {
+                el.style.animation = swayPref ? 'rotateLantern 5s ease-in-out infinite' : 'none';
+            });
+            document.querySelectorAll('.animate-streamer').forEach(el => {
+                el.style.animation = swayPref ? 'swayStreamer 3.5s ease-in-out infinite' : 'none';
+            });
+
+            // Flickering candle flame elements
+            document.querySelectorAll('.animate-flame').forEach(el => {
+                el.style.animation = flickerPref ? 'flameFlicker 1s ease-in-out infinite' : 'none';
+            });
+
+            // Twinkling stars and pulsing glows
+            document.querySelectorAll('.twinkle-star').forEach(el => {
+                el.style.animation = starsPref ? 'starryTwinkle 2.5s ease-in-out infinite' : 'none';
+            });
+            document.querySelectorAll('.animate-aurapulse').forEach(el => {
+                el.style.animation = starsPref ? 'softPulse 4s ease-in-out infinite' : 'none';
+            });
+        }
+
+        // Beautiful browser music player for custom local mp3 file
+        function toggleVesakMusic() {
+            if (!vesakAudio) {
+                vesakAudio = new Audio('wesak.mp3');
+                vesakAudio.loop = true;
+            }
+
+            if (!isMelodyPlaying) {
+                isMelodyPlaying = true;
+                
+                // Update Button Visuals
+                document.getElementById('music-wave').classList.remove('hidden');
+                document.getElementById('music-stop-dot').classList.add('hidden');
+                document.getElementById('music-btn-text').textContent = "Mute Music (සංගීතය නවත්වන්න)";
+                document.getElementById('btn-ambient-music').classList.add('border-emerald-500/50', 'text-emerald-300');
+
+                // Play the MP3 audio file from root
+                vesakAudio.play().catch(err => {
+                    console.warn("Audio playback failed or blocked by browser policies:", err);
+                    showToastNotification(
+                        "Audio Playback Info", 
+                        "ඔබගේ 'wesak.mp3' ගොනුව නිවැරදිව root directory එකෙහි පවතින බව තහවුරු කරගන්න."
+                    );
+                });
+            } else {
+                isMelodyPlaying = false;
+                
+                // Update Button Visuals
+                document.getElementById('music-wave').classList.add('hidden');
+                document.getElementById('music-stop-dot').classList.remove('hidden');
+                document.getElementById('music-btn-text').textContent = "Play Vesak Music (සංගීතය ක්‍රියාත්මක කරන්න)";
+                document.getElementById('btn-ambient-music').classList.remove('border-emerald-500/50', 'text-emerald-300');
+
+                // Pause the audio
+                if (vesakAudio) {
+                    vesakAudio.pause();
+                }
+            }
+        }
+
+        // Alters the preview dimensions for dual greeting card mockups ready to print
+        function toggleFoldingCardLayout() {
+            doubleFoldingActive = !doubleFoldingActive;
+            const captureArea = document.getElementById('greeting-capture-wrapper');
+            const toggleText = document.getElementById('txt-fold-btn');
+
+            if (doubleFoldingActive) {
+                captureArea.classList.remove('aspect-[4/5]');
+                captureArea.classList.add('aspect-[8/5]', 'max-w-2xl', 'double-folding');
+                toggleText.textContent = "Switch back to Portrait Web Layout (පෝට්රේට් Layout එකට)";
+            } else {
+                captureArea.classList.add('aspect-[4/5]');
+                captureArea.classList.remove('aspect-[8/5]', 'max-w-2xl', 'double-folding');
+                toggleText.textContent = "Switch to Double Folding Layout (ප්‍රින්ට් කිරිමට සුදුසු නැමෙන Layout එක)";
+            }
+        }
+
+        // Captures DOM canvas flawlessly and triggers physical file download
+        function exportCardToImage() {
+            const captureArea = document.getElementById('greeting-capture-wrapper');
+            
+            // Momentarily pause animation loops to capture crisp non-blurry screenshots
+            toggleActiveAnimations(false);
+
+            html2canvas(captureArea, {
+                scale: 3, // Crisp pristine 3X upscale rendering fit for printing
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#020617'
+            }).then(canvas => {
+                // Reactivate animations
+                toggleActiveAnimations(true);
+
+                const base64Data = canvas.toDataURL("image/png");
+                const anchor = document.createElement('a');
+                anchor.download = `D-one_Creation_Vesak_Card_${activeTheme}.png`;
+                anchor.href = base64Data;
+                document.body.appendChild(anchor);
+                anchor.click();
+                document.body.removeChild(anchor);
+
+                // Replaced raw alert with Toast notification
+                showToastNotification(
+                    "Success • සාර්ථකයි!", 
+                    "සුබපැතුම් පත සාර්ථකව image එක ඩවුන්ලෝඩ් කරගත්තා! (Pristine 3X High-Res PNG Downloaded)"
+                );
+            }).catch(error => {
+                console.error("Canvas screenshot failure: ", error);
+                toggleActiveAnimations(true);
+            });
+        }
+
+        // Encodes card customizations inside URL query params so cards are immediately shareable!
+        function shareLiveCardLink() {
+            const valTo = document.getElementById('field-to').value.trim();
+            const valFrom = document.getElementById('field-from').value.trim();
+            const valMessage = document.getElementById('field-message').value.trim();
+            const valTextColor = document.getElementById('style-text-color').value;
+            const valBorder = document.getElementById('style-border-frame').value;
+
+            // Build query params
+            const parameters = new URLSearchParams();
+            parameters.set('t', activeTheme);
+            if (valTo) parameters.set('to', valTo);
+            if (valFrom) parameters.set('fr', valFrom);
+            if (valMessage) parameters.set('msg', valMessage);
+            parameters.set('col', valTextColor.replace('#', ''));
+            parameters.set('bdr', valBorder);
+
+            // Construct dynamic shareable absolute address
+            const dynamicShareableURL = `${window.location.origin}${window.location.pathname}?${parameters.toString()}`;
+
+            // Try copying directly to clipboard
+            const tempBox = document.createElement('textarea');
+            tempBox.value = dynamicShareableURL;
+            document.body.appendChild(tempBox);
+            tempBox.select();
+            
+            let success = false;
+            try {
+                success = document.execCommand('copy');
+            } catch (err) {}
+            document.body.removeChild(tempBox);
+
+            if (success) {
+                showToastNotification(
+                    "Copied to Clipboard!", 
+                    "ඔබගේ වෙසක් සුබපැතුම් පතේ Link එක සාර්ථකව Copy කරගත්තා. දැන් එය WhatsApp / Viber හෝ ඕනෑම තැනක Share කරන්න!"
+                );
+            } else {
+                showToastNotification(
+                    "Link Ready!", 
+                    `Shareable Address: ${dynamicShareableURL}`
+                );
+            }
+        }
+
+        // Checks URL params for gift cards and enters custom preset loaded mode
+        function detectAndLoadSharedParameters() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('t') || params.has('fr') || params.has('to')) {
+                
+                // Show recipient banner
+                document.getElementById('shared-gift-banner').classList.remove('hidden');
+
+                // Read custom details
+                const themeVal = params.get('t') || 'lantern';
+                const toVal = params.get('to') || '';
+                const fromVal = params.get('fr') || '';
+                const msgVal = params.get('msg') || '';
+                const colorVal = params.get('col') || 'FCD34D';
+                const borderVal = params.get('bdr') || 'gold-double';
+
+                // Sync forms
+                document.getElementById('field-to').value = toVal;
+                document.getElementById('field-from').value = fromVal;
+                document.getElementById('field-message').value = msgVal;
+                document.getElementById('style-text-color').value = `#${colorVal}`;
+                document.getElementById('style-border-frame').value = borderVal;
+
+                // Sync card
+                applyTheme(themeVal);
+                syncFormToCard();
+
+                // On mobile, default directly to "View Card Preview" so they see the card first
+                if (window.innerWidth < 1024) {
+                    switchMobileTab('view');
+                }
+
+                // Autoplay/Trigger sound alerts
+                setTimeout(() => {
+                    toggleVesakMusic();
+                }, 1000);
+            } else {
+                // Fresh default init
+                applyTheme('lantern');
+                setGreetingPreset(1);
+            }
+        }
+
+        // Clears URL query details to customize new cards from scratch
+        function switchToCreateMode() {
+            // Hide shared banner
+            document.getElementById('shared-gift-banner').classList.add('hidden');
+            
+            // Clean URL query states
+            window.history.pushState({}, document.title, window.location.pathname);
+
+            // Open Customize tab on mobile
+            if (window.innerWidth < 1024) {
+                switchMobileTab('edit');
+            }
+        }
+
+        // Toggle state utilities
+        function toggleActiveAnimations(enable) {
+            if (!enable) {
+                document.querySelectorAll('.animate-lantern').forEach(el => el.style.animation = 'none');
+                document.querySelectorAll('.animate-streamer').forEach(el => el.style.animation = 'none');
+                document.querySelectorAll('.animate-flame').forEach(el => el.style.animation = 'none');
+                document.querySelectorAll('.twinkle-star').forEach(el => el.style.animation = 'none');
+                document.querySelectorAll('.animate-aurapulse').forEach(el => el.style.animation = 'none');
+                document.querySelectorAll('.animate-slow-spin').forEach(el => el.style.animation = 'none');
+            } else {
+                toggleAnimationClasses();
+            }
+        }
+
+        function openInstructions() {
+            document.getElementById('instructions-modal').classList.remove('hidden');
+        }
+
+        function closeInstructions() {
+            document.getElementById('instructions-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
